@@ -3,6 +3,7 @@ on: [push]
 
 jobs:
   build:
+  if: always()
 
     runs-on: ubuntu-latest
 
