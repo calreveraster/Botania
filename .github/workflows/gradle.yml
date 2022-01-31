@@ -1,12 +1,13 @@
 name: Botania_249v2
 on: [push]
 jobs:
-if: always()
+
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 8
+        if: always()
         uses: actions/setup-java@v2
         with:
           java-version: 17
