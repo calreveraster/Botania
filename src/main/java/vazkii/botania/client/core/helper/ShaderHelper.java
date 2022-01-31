@@ -47,10 +47,11 @@ public final class ShaderHelper {
 	public static void initShaders() {
 		if(!useShaders())
 			return;
-
-		pylonGlow = createProgram(null, LibResources.SHADER_PYLON_GLOW_FRAG);
-		enchanterRune = createProgram(null, LibResources.SHADER_ENCHANTER_RUNE_FRAG);
-		manaPool = createProgram(null, LibResources.SHADER_MANA_POOL_FRAG);
+		
+		//Need to make this more shader friendly. 
+		//pylonGlow = createProgram(null, LibResources.SHADER_PYLON_GLOW_FRAG);
+		//enchanterRune = createProgram(null, LibResources.SHADER_ENCHANTER_RUNE_FRAG);
+		//manaPool = createProgram(null, LibResources.SHADER_MANA_POOL_FRAG);
 		doppleganger = createProgram(LibResources.SHADER_DOPLLEGANGER_VERT, LibResources.SHADER_DOPLLEGANGER_FRAG);
 		halo = createProgram(null, LibResources.SHADER_HALO_FRAG);
 		dopplegangerBar = createProgram(null, LibResources.SHADER_DOPLLEGANGER_BAR_FRAG);
