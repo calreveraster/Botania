@@ -18,7 +18,7 @@ buildscript {
 repositories {
     maven {
         name = "chickenlib"
-        url = "https://maven.cil.li/codechicken/CodeChickenLib"
+        url = "https://maven.cil.li/codechicken"
     }
 }
 
@@ -60,7 +60,7 @@ dependencies {
     compile files(
         'Baubles-deobf.jar'
     )
-    compile "/1.7.10-1.1.3.136:1.7.10-1.1.3.136-dev"
+    compile "CodeChickenLib:1.7.10-1.1.3.136:1.7.10-1.1.3.136-dev"
     compile "codechicken:CodeChickenCore:1.7.10-1.0.2.9:dev"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev"
     compile "codechicken:ForgeMultipart:1.7.10-1.1.1.320:dev"
