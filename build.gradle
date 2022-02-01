@@ -21,13 +21,8 @@ buildscript {
     	}
 }
 
-plugins {
-  	id 'java'
-}
-java {
-    	toolchain {
-        	languageVersion = JavaLanguageVersion.of(6)
-    	}
+compileJava {
+    options.release = 7
 }
 
 //codechicken stuff
