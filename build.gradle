@@ -21,10 +21,13 @@ buildscript {
     	}
 }
 
+/*this didnt exist until like gradle 4, dont try it.
 plugins {
     id 'java-library'
 }
 apply plugin: 'java'
+*/
+
 //codechicken stuff
 repositories {
 	
@@ -48,8 +51,13 @@ repositories {
     	}
 }
 
+//compileJava needs Java-library, which is bees. 
+//sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
+//we'll try this instead...
+targetCompatibility = 1.6
+sourceCompatibility = 1.6
+
 apply plugin: 'forge'
 apply plugin: 'curseforge'
 
