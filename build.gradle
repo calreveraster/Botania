@@ -72,17 +72,16 @@ configurations {
 
 //End of the SCP config
 
-dependencies {
-    compile files(
-        'Baubles-deobf.jar'
-    )
-    compile "CodeChickenLib-1.7.10-1.1.3.136-dev"
-    compile "CodeChickenCore-1.7.10-1.0.4.35-dev"
-    compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev"
-    compile "codechicken:ForgeMultipart:1.7.10-1.1.1.320:dev"
+dependencies 
+{
+	compile files('Baubles-deobf.jar')
+	compile ":CodeChickenLib-1.7.10-1.1.3.136-dev"
+    	compile ":CodeChickenCore-1.7.10-1.0.4.35-dev"
+    	compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev"
+    	compile "codechicken:ForgeMultipart:1.7.10-1.1.1.320:dev"
 
-    //and a bit more for SCP
-    sshAntTask "org.apache.ant:ant-jsch:1.7.1", "jsch:jsch:0.1.29"
+    	//and a bit more for SCP
+    	sshAntTask "org.apache.ant:ant-jsch:1.7.1", "jsch:jsch:0.1.29"
 }
 
 processResources {
