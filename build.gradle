@@ -44,7 +44,7 @@ repositories {
         	dirs 'dependencies'
     	}
 }
-
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
 apply plugin: 'forge'
 apply plugin: 'curseforge'
 
