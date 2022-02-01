@@ -34,6 +34,10 @@ repositories {
         	name = "chickencore"
         	url = "https://maven.cil.li/codechicken/CodeChickenCore"
     	}
+    	flatDir {
+		//local dependency repository because I hate maven.
+        	dirs 'dependencies'
+    	}
 }
 
 apply plugin: 'forge'
