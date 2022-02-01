@@ -34,7 +34,7 @@ repositories
 	maven 
     	{
         	name = "chickencore"
-        	url = "https://maven.cil.li/codechicken/CodeChickenCore/1.7.10-1.0.4.35/"
+        	url = "https://maven.cil.li/codechicken/CodeChickenCore/1.7.10-1.0.4.35"
     	}
 }
 
@@ -42,7 +42,6 @@ apply plugin: 'forge'
 apply plugin: 'curseforge'
 
 ext.configFile = file('build.properties')
-
 ext.config = parseConfig(configFile)
 ext.priv = parseConfig(file('private.properties'))
 
@@ -50,23 +49,27 @@ version = "${config.version}-${config.build_number}"
 group = "vazkii.botania" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = config.mod_name
 
-minecraft {
-    version = "${config.mc_version}-${config.forge_version}"
-    assetDir = "eclipse/assets"
+minecraft 
+{
+    	version = "${config.mc_version}-${config.forge_version}"
+    	assetDir = "eclipse/assets"
 
-    //This, does the token replacement.
-    //Though, I reccomend this to be replaced with a token such as @VERSION@
-    replace 'GRADLE:BUILD', config.build_number
-    replace 'GRADLE:VERSION', config.version
+    	//This, does the token replacement.
+    	//Though, I reccomend this to be replaced with a token such as @VERSION@
+    
+    	replace 'GRADLE:BUILD', config.build_number
+    	replace 'GRADLE:VERSION', config.version
 
-    replaceIn 'LibMisc.java' //I may have missed another file, though I can only find it in here.
+    	replaceIn 'LibMisc.java' //I may have missed another file, though I can only find it in here.
 }
 
 //This here is for SCP
-repositories {
+repositories 
+{
     mavenCentral()
 }
-configurations {
+configurations 
+{
     sshAntTask
 }
 
@@ -75,8 +78,8 @@ configurations {
 dependencies 
 {
 	compile files('Baubles-deobf.jar')
-	compile ":CodeChickenLib-1.7.10-1.1.3.136-dev"
-    	compile ":CodeChickenCore-1.7.10-1.0.4.35-dev"
+	compile ":1.7.10-1.1.3.136"
+    	compile ":1.7.10-1.0.4.35"
     	compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev"
     	compile "codechicken:ForgeMultipart:1.7.10-1.1.1.320:dev"
 
