@@ -1,26 +1,41 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        }
-    }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-    }
+buildscript 
+{
+	//forge and sonatype repos
+	repositories 
+	{
+		mavenCentral()
+        	maven 
+		{
+            		name = "forge"
+            		url = "http://files.minecraftforge.net/maven"
+        	}
+        	maven 
+		{
+            		name = "sonatype"
+            		url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        	}
+    	}
+	
+	//associated dependencies
+    	dependencies 
+	{
+        	classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    	}
 }
 
-repositories {
-    maven {
-        name = "chickenlib"
-        url = "https://maven.cil.li/codechicken/CodeChickenLib/1.7.10-1.1.3.136"
-
-    }
+//codechicken stuff
+repositories 
+{
+	maven 
+    	{
+        	name = "chickenlib"
+        	url = "https://maven.cil.li/codechicken/CodeChickenLib/1.7.10-1.1.3.136"
+    	}
+	maven 
+    	{
+        	name = "chickencore"
+        	url = "https://maven.cil.li/codechicken/CodeChickenCore/1.7.10-1.0.4.35/"
+    	}
 }
 
 apply plugin: 'forge'
@@ -61,8 +76,8 @@ dependencies {
     compile files(
         'Baubles-deobf.jar'
     )
-    compile "1.7.10-1.1.3.136-dev"
-    compile "codechicken:CodeChickenCore:1.7.10-1.0.2.9:dev"
+    compile "CodeChickenLib-1.7.10-1.1.3.136-dev"
+    compile "CodeChickenCore-1.7.10-1.0.4.35-dev"
     compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev"
     compile "codechicken:ForgeMultipart:1.7.10-1.1.1.320:dev"
 
