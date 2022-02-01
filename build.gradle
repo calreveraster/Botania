@@ -1,4 +1,4 @@
-apply plugin: 'java'
+
 buildscript {
 	//forge and sonatype repos
 	repositories {
@@ -20,16 +20,6 @@ buildscript {
         	
 		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     	}
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(7)
-    }
-}
-
-compileJava {
-    options.release = 7
 }
 
 //codechicken stuff
