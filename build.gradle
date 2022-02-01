@@ -22,6 +22,12 @@ buildscript {
     	}
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(7)
+    }
+}
+
 compileJava {
     options.release = 7
 }
