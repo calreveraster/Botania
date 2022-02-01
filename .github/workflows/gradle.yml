@@ -10,7 +10,7 @@ jobs:
         if: always()
         uses: actions/setup-java@v2
         with:
-          java-version: '8'
+          java-version: '8.0.322+6'
           distribution: 'adopt'
       - name: Build with Gradle
         run: ./gradlew build
