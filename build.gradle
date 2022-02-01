@@ -1,4 +1,4 @@
-
+apply plugin: 'java'
 buildscript {
 	//forge and sonatype repos
 	repositories {
@@ -22,6 +22,9 @@ buildscript {
     	}
 }
 
+plugins {
+    id 'java-library'
+}
 //codechicken stuff
 repositories {
 	
@@ -45,9 +48,7 @@ repositories {
     	}
 }
 
-plugins {
-    id 'java-library'
-}
+
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
 apply plugin: 'forge'
 apply plugin: 'curseforge'
