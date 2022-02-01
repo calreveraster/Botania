@@ -1,12 +1,3 @@
-plugins {
-  	id 'java-library'
-}
-java {
-    	toolchain {
-        	languageVersion = JavaLanguageVersion.of(6)
-    	}
-}
-
 buildscript {
 	//forge and sonatype repos
 	repositories {
@@ -27,6 +18,15 @@ buildscript {
     	dependencies {
         	
 		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    	}
+}
+
+plugins {
+  	id 'java-library'
+}
+java {
+    	toolchain {
+        	languageVersion = JavaLanguageVersion.of(6)
     	}
 }
 
