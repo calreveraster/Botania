@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK ...6?
+      - name: Set up JDK
         if: always()
         uses: actions/setup-java@v2
         with:
-          java-version: 6
+          java-version: '8'
           distribution: 'adopt'
       - name: Build with Gradle
         run: ./gradlew build
