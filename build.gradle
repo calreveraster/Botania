@@ -76,8 +76,9 @@ configurations {
 
 //codechicken dependencies
 dependencies {
+	//names swapped to local dependency names
 	compile files('Baubles-deobf.jar')
-	compile "CodeChickenLib-1.7.10-1.1.3.136-dev.jar"
+	compile ":CodeChickenLib"
     	compile ":1.7.10-1.0.4.35"
     	compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev"
     	compile "codechicken:ForgeMultipart:1.7.10-1.1.1.320:dev"
