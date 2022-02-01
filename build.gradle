@@ -140,8 +140,7 @@ task wtfGradle2(type: Copy) {
 }
 
 // Seriously, I'm desperate to make this work
-task wtfGradle1(type: Delete) 
-{
+task wtfGradle1(type: Delete) {
 	dependsOn "wtfGradle2"
     	delete "${config.dir_output}/wtf/${deobfJar.archiveName}"
 }
