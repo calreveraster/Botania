@@ -1,5 +1,10 @@
-buildscript 
-{
+java {
+    	toolchain {
+        	languageVersion = JavaLanguageVersion.of(6)
+    	}
+}
+
+buildscript {
 	//forge and sonatype repos
 	repositories {
 		mavenCentral()
