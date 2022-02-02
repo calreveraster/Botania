@@ -404,7 +404,7 @@ public final class ConfigHandler
 	}
 
 
-	public static boolean loadPropBool(String propName, String desc, String configCat boolean default_) 
+	public static boolean loadPropBool(String propName, String desc, String configCat, boolean default_) 
 	{
 		Property prop = config.get(Configuration.configCat, propName, default_);
 		prop.comment = desc;
