@@ -15,6 +15,7 @@ jobs:
       
       - name: Build with Gradle
         run: ./gradlew build
-        arguments:
-          -Dhttps.protocols=TLSv1.2
+        with:
+          arguments:
+            -Dhttps.protocols=TLSv1.2
 
