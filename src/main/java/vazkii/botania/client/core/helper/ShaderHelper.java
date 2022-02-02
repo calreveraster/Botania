@@ -132,6 +132,61 @@ public final class ShaderHelper {
 		return ConfigHandler.useShaders && OpenGlHelper.shadersSupported;
 	}
 
+	/*
+	* New methods for updated shader configs
+	* Yeet. 
+	*/
+
+	public static boolean usePylonGlowShader() 
+	{
+		return ConfigHandler.usePylonGlowShader && OpenGlHelper.shadersSupported;
+	}
+
+	public static boolean useEnchanterRuneShader() 
+	{
+		return ConfigHandler.useEnchanterRuneShader && OpenGlHelper.shadersSupported;
+	}
+
+	public static boolean useManaPoolShader() 
+	{
+		return ConfigHandler.useManaPoolShader && OpenGlHelper.shadersSupported;
+	}
+
+	public static boolean useDopplegangerShader() 
+	{
+		return ConfigHandler.useDopplegangerShader && OpenGlHelper.shadersSupported;
+	}
+
+		public static boolean useHaloShader() 
+	{
+		return ConfigHandler.useHaloShader && OpenGlHelper.shadersSupported;
+	}
+
+	public static boolean useDopplegangerBarShader() 
+	{
+		return ConfigHandler.useDopplegangerBarShader && OpenGlHelper.shadersSupported;
+	}
+
+	public static boolean useTerraplateRuneShader() 
+	{
+		return ConfigHandler.useTerraplateRuneShader && OpenGlHelper.shadersSupported;
+	}
+
+	public static boolean useFilmGrainShader() 
+	{
+		return ConfigHandler.useFilmGrainShader && OpenGlHelper.shadersSupported;
+	}
+
+	public static boolean useGoldShader() 
+	{
+		return ConfigHandler.useGoldShader && OpenGlHelper.shadersSupported;
+	}
+
+	public static boolean useCategoryButtonShader() 
+	{
+		return ConfigHandler.usePylonGlowShader && OpenGlHelper.shadersSupported;
+	}
+
 	// Most of the code taken from the LWJGL wiki
 	// http://lwjgl.org/wiki/index.php?title=GLSL_Shaders_with_LWJGL
 
