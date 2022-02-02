@@ -5,7 +5,7 @@ buildscript {
 		
 		// https://mvnrepository.com/artifact/jdk.tools/jdk.tools
 		maven {
-			system group: 'jdk.tools', name: 'jdk.tools', version: '1.6'
+			http://maven.icm.edu.pl/artifactory/repo/
 		}
 		
         	maven {
