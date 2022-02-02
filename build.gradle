@@ -49,12 +49,11 @@ repositories {
 //sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
 
 //we'll try this instead...
-
+apply plugin: 'java'
+targetCompatibility = 1.6
+sourceCompatibility = 1.6
 
 allprojects {
-	apply plugin: 'java'
-	targetCompatibility = 1.6
-	sourceCompatibility = 1.6
     repositories {
         all { ArtifactRepository repo ->
             if (repo instanceof MavenArtifactRepository){
@@ -125,7 +124,7 @@ processResources {
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         	
-	include 'mcmod.info'
+		include 'mcmod.info'
         // replace version and mcversion
         expand 'version': project.version, 'mcversion': project.minecraft.version
     }
