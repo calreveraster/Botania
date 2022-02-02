@@ -59,8 +59,10 @@ targetCompatibility = 1.6
 
 allprojects {
 	apply plugin: 'java'
-	sourceCompatibility = 1.6
-	targetCompatibility = 1.6
+	tasks.withType(JavaCompile) {
+		sourceCompatibility = 1.6
+		targetCompatibility = 1.6
+	}
     repositories {
         all { ArtifactRepository repo ->
             if (repo instanceof MavenArtifactRepository){
