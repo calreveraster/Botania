@@ -14,8 +14,6 @@ jobs:
           distribution: 'zulu'
       
       - name: Build with Gradle
-        run: ./gradlew build
-        with:
-          arguments:
-            -Dhttps.protocols=TLSv1.2
+        run: ./gradlew build -Dhttps.protocols=TLSv1.2
+            
 
