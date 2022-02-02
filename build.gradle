@@ -45,8 +45,20 @@ repositories {
 //sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
 
 //we'll try this instead...
-targetCompatibility = 1.6
-sourceCompatibility = 1.6
+//targetCompatibility = 1.6
+//sourceCompatibility = 1.6
+
+allprojects {
+    repositories {
+        all { ArtifactRepository repo ->
+            if (repo instanceof MavenArtifactRepository){
+                if (repo.url.toString().startsWith("http://repo1.maven.org/maven2")) {
+                    repo.url = repo.url.toString().replace("http://", "https://")
+                }
+            }
+        }
+    }
+}
 
 apply plugin: 'forge'
 apply plugin: 'curseforge'
