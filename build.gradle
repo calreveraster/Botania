@@ -1,66 +1,47 @@
 buildscript {
-	//forge and sonatype repos
+
+	//forge, maven and sonatype repos
 	repositories {
 		
+		//mavenCentral()
 		//Due to support changes, mavencentral no longer works. We can use the full URL instead. 
 		//not great safety wise, but this is for a private server. fuck it. 
-		//mavenCentral()
 		
 		maven {
-		 url = "http://repo.maven.apache.org/maven2"
+			name = "mavenCentral"
+			url = "http://repo.maven.apache.org/maven2"
 		}
 
 		maven {
 			http://maven.icm.edu.pl/artifactory/repo/
 		}
 		
-        	maven {
+        maven {
 		
-            		name = "forge"
-            		url = "http://files.minecraftforge.net/maven"
-        	}
-        	maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
             		
-			name = "sonatype"
-            		url = "https://oss.sonatype.org/content/repositories/snapshots/"
-        	}
-    	}
+		name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
 	
 	//associated dependencies
-    	dependencies {
+    dependencies {
         	
 		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-    	}
+    }
 }
-
-/*this didnt exist until like gradle 4, dont try it.
-plugins {
-    id 'java-library'
-}
-apply plugin: 'java'
-*/
 
 //codechicken stuff
-repositories {
-	
-	//I no longer need these, moving to local dependency. 
-	/*
-	maven {
-        	name = "chickenlib"
-        	url = "https://maven.cil.li/codechicken/CodeChickenLib/1.7.10-1.1.3.136"
-    	}
-	
-	maven {
-        	name = "chickencore"
-        	url = "https://maven.cil.li/codechicken/CodeChickenCore"
-    	}
-	*/
-	
+repositories {	
 	//for codechicken and NEI stuff. 
-    	flatDir {
-		//local dependency repository because I hate maven.
-        	dirs 'dependencies'
-    	}
+    flatDir {
+	//local dependency repository because I hate maven.
+        dirs 'dependencies'
+    }
 }
 
 //compileJava needs Java-library, which is bees. 
@@ -82,21 +63,29 @@ group = "vazkii.botania" // http://maven.apache.org/guides/mini/guide-naming-con
 archivesBaseName = config.mod_name
 
 minecraft {
-    	version = "${config.mc_version}-${config.forge_version}"
-    	assetDir = "eclipse/assets"
+    version = "${config.mc_version}-${config.forge_version}"
+    assetDir = "eclipse/assets"
 
-    	//This, does the token replacement.
-    	//Though, I reccomend this to be replaced with a token such as @VERSION@
+    //This, does the token replacement.
+    //Though, I reccomend this to be replaced with a token such as @VERSION@
     
-    	replace 'GRADLE:BUILD', config.build_number
-    	replace 'GRADLE:VERSION', config.version
+    replace 'GRADLE:BUILD', config.build_number
+    replace 'GRADLE:VERSION', config.version
 
-    	replaceIn 'LibMisc.java' //I may have missed another file, though I can only find it in here.
+    replaceIn 'LibMisc.java' //I may have missed another file, though I can only find it in here.
 }
 
 //This here is for SCP
 repositories {
-    mavenCentral()
+    //mavenCentral()
+	//Due to support changes, mavencentral no longer works. We can use the full URL instead. 
+	//not great safety wise, but this is for a private server. fuck it. 
+
+		
+	maven {
+		name = "mavenCentral"
+		url = "http://repo.maven.apache.org/maven2"
+	}
 }
 configurations {
     sshAntTask
@@ -152,8 +141,8 @@ artifacts {
 }
 
 /**
- * Increments the buildnumber in your config file, and saves it
- */
+* Increments the buildnumber in your config file, and saves it
+*/
 
 task incrementBuildNumber(dependsOn: 'reobf') << {
     	
