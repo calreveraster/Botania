@@ -46,8 +46,10 @@ public final class ShaderHelper {
 
 	public static void initShaders() {
 		if(!useShaders())
-		FMLLog.log(Level.INFO, "Shaders not running.");
+		{
+			FMLLog.log(Level.INFO, "Shaders not running.");
 			return;
+		}
 		
 		/*
 		* Need to make this more shader friendly. 
