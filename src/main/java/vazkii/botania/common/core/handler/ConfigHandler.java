@@ -407,7 +407,7 @@ public final class ConfigHandler
 
 	public static boolean loadPropBoolShaders(String propName, String desc, boolean default_) 
 	{
-		Property prop = config.get(Configuration.CATEGORY_SHADERS, propName, default_);
+		Property prop = config.get(Categories.CATEGORY_SHADERS, propName, default_);
 		prop.comment = desc;
 
 		if(adaptor != null)
