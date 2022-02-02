@@ -1,3 +1,8 @@
+This fork is an attempt to make v249 work with some of the more modern shaders. 
+I had no idea how hard it would be to get this to compile with the https changes to the gradle setup is a mess. 
+
+It's working now, so I can actually start on the changes I wanted to make. This is not working yet, do not use. 
+
 ![](https://github.com/Vazkii/Botania/blob/master/web/img/logo.png)  
 Welcome to the Botania repository.  
 
