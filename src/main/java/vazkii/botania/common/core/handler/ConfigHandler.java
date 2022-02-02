@@ -34,6 +34,13 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public final class ConfigHandler {
 
+	//attempt to set up some config categories
+	public static class Categories 
+	{
+		public static final String CATEGORY_SHADERS = "Shaders";
+	}
+
+	private static String directory;
 	public static Configuration config;
 	public static ConfigAdaptor adaptor;
 
@@ -150,7 +157,7 @@ public final class ConfigHandler {
 		*/
 
 		desc = "Set this to false to disable the Pylon Glow Shader";
-		usePylonGlowShader = loadPropBool("pylonGlowShaders.enabled", desc, usePylonGlowShader);
+		usePylonGlowShader = loadPropBool("pylonGlowShaders.enabled", Categories.CATEGORY_SHADERS, desc, usePylonGlowShader);
 
 		desc = "Set this to false to disable the Enchanter Rune Shader";
 		useEnchanterRuneShader = loadPropBool("enchanterRuneShaders.enabled", desc, useEnchanterRuneShader);
@@ -165,7 +172,7 @@ public final class ConfigHandler {
 		useHaloShader = loadPropBool("haloShaders.enabled", desc, useHaloShader);
 
 		desc = "Set this to false to disable the Doppleganger Bar Shader";
-		useDopplegangerBarShader = loadPropBool("dopplegangerShaders.enabled", desc, useDopplegangerBarShader);
+		useDopplegangerBarShader = loadPropBool("dopplegangerBarShaders.enabled", desc, useDopplegangerBarShader);
 
 		desc = "Set this to false to disable the Terraplate Rune Shader";
 		useTerraplateRuneShader = loadPropBool("terraplateRuneShaders.enabled", desc, useTerraplateRuneShader);
@@ -305,7 +312,7 @@ public final class ConfigHandler {
 		invertMagnetRing = loadPropBool("magnetRing.invert", desc, invertMagnetRing);
 
 		desc = "Set this to false to disable Thaumcraft Infusion Stabilizing in botania blocks";
-		enableThaumcraftStablizers = loadPropBool("thaumraftStabilizers.enabled", desc, enableThaumcraftStablizers);
+		enableThaumcraftStablizers = loadPropBool("thaumcraftStabilizers.enabled", desc, enableThaumcraftStablizers);
 		
 		desc = "The harvest level of the Mana Lens: Weight. 3 is diamond level. Defaults to 2 (iron level)";
 		harvestLevelWeight = loadPropInt("harvestLevel.weightLens", desc, harvestLevelWeight);

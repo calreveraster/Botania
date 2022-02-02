@@ -312,12 +312,35 @@ botania.flowerType.functional=Functional Flower
 botania.flowerType.misc=Miscellaneous Flower
 
 #New Config Entries 
-pylonGlowShaders.enabled Shader: Pylon Glow
+pylonGlowShaders.enabled=Shader: Pylon Glow
+enchanterRuneShaders.enabled=Shader: Enchanter Rune
+manaPoolShaders.enabled=Shader: Mana Pool
+dopplegangerShaders.enabled=Shader: Doppleganger
+haloShaders.enabled=Shader: Halo
+dopplegangerBarShaders.enabled=Shader: Doppleganger Bar
+terraplateRuneShaders.enabled=Shader: Terraplate Rune
+filmGrainShaders.enabled=Shader: Film Grain
+goldShaders.enabled=Shader: Gold
+categoryButtonShaders.enabled=Shader: Category Button
+
 
 #Corrected Old Configs
 shaders.secondaryUnit=Shader Secondary Unit
 seasonalFeatures.enabled=Enable Seasonal Decor
 thaumcraftStabilizers.enabled=Enable TC Stabilizers from Botania
+worldgen.flower.patchChance=Flower Patch Generation Chance
+worldgen.flower.patchSize=Flower Patch Size
+fancySkybox.enable=Turn on Fancy Skybox
+fancySkybox.normalWorlds=Use Fancy Skybox in Normal Worlds
+flightBar.height=Flight Bar Height
+flightBarBreath.height=Height of Flight Bar Breath
+armorModels.enable=Turn on Custom Armor Models
+adaptiveConfig.enabled=Enable Adaptive Config
+harvestLevel.boreLens=Bore Lens Harvest Level
+harvestLevel.weightLens=Weight lens Harvest Level
+quickLookup.useShift=Use Shift for Quick Lookup
+worldgen.flower.tallChance=Change for Tall Flower
+
 
 # CONFIGURATION
 blockBreakingParticles.enabled=Block Break Particles
