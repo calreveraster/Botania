@@ -10,7 +10,7 @@ jobs:
         if: always()
         uses: actions/setup-java@v2
         with:
-          java-version: '6'
+          java-version: '7'
           distribution: 'zulu'
       
       - name: Build with Gradle
