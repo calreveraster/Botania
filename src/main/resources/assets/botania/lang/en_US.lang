@@ -311,6 +311,14 @@ botania.flowerType.generating=Generating Flower
 botania.flowerType.functional=Functional Flower
 botania.flowerType.misc=Miscellaneous Flower
 
+#New Config Entries 
+pylonGlowShaders.enabled Shader: Pylon Glow
+
+#Corrected Old Configs
+shaders.secondaryUnit=Shader Secondary Unit
+seasonalFeatures.enabled=Enable Seasonal Decor
+thaumcraftStabilizers.enabled=Enable TC Stabilizers from Botania
+
 # CONFIGURATION
 blockBreakingParticles.enabled=Block Break Particles
 blockBreakingParticlesTool.enabled=Tool Block Break Particles
