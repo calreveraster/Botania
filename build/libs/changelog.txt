@@ -1,0 +1,19 @@
+2/1/22
+
+Made several changes so that I dont need to be moving files back and forth between github because I'd rather just edit in one place. 
+Is that terible form? Yes. Is it easier? Also yes. 
+
+• Created github build setup
+• Created github package creator 
+• Threw build.gradle against a wall and threatened it angrily until it complied
+• Did the same to to the new build.yml file
+• Created a few directories and moved several dependencies to be local files due to http changes 
+• Got a successful compile
+
+2/2/22
+11:00 AM 
+
+• Cleaned up build.gradle after ripping it apart to bring it up to working order
+• Added options to confighandler for individual shaders
+• Added methods to call those configs in the shader helper
+
