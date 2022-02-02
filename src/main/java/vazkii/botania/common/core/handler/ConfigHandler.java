@@ -8,6 +8,7 @@
  * 
  * File Created @ [Jan 13, 2014, 9:01:32 PM (GMT)]
  */
+
 package vazkii.botania.common.core.handler;
 
 import java.io.File;
@@ -32,7 +33,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public final class ConfigHandler {
+public final class ConfigHandler 
+{
 
 	//attempt to set up some config categories
 	public static class Categories 
@@ -388,6 +390,9 @@ public final class ConfigHandler {
 		return prop.getDouble(default_);
 	}
 
+	//old load prop with no category
+
+	
 	public static boolean loadPropBool(String propName, String desc, boolean default_) {
 		Property prop = config.get(Configuration.CATEGORY_GENERAL, propName, default_);
 		prop.comment = desc;
@@ -397,6 +402,19 @@ public final class ConfigHandler {
 
 		return prop.getBoolean(default_);
 	}
+
+
+	public static boolean loadPropBool(String propName, String desc, String configCat boolean default_) 
+	{
+		Property prop = config.get(Configuration.configCat, propName, default_);
+		prop.comment = desc;
+
+		if(adaptor != null)
+			adaptor.adaptPropertyBool(prop, prop.getBoolean(default_));
+
+		return prop.getBoolean(default_);
+	}
+
 
 	public static int loadPropPotionId(String propName, int default_) {
 		if(!verifiedPotionArray)
