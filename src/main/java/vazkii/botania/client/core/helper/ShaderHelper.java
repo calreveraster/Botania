@@ -84,7 +84,7 @@ public final class ShaderHelper {
 			dopplegangerBar = createProgram(null, LibResources.SHADER_DOPLLEGANGER_BAR_FRAG);
 		}
 
-		if (useTerraPlateShader())
+		if (useTerraplateRuneShader())
 		{
 			terraPlateRune = createProgram(null, LibResources.SHADER_TERRA_PLATE_RUNE_FRAG);
 		}
