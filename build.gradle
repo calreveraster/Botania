@@ -1,9 +1,15 @@
 buildscript {
 	//forge and sonatype repos
 	repositories {
-		mavenCentral()
 		
-		// https://mvnrepository.com/artifact/jdk.tools/jdk.tools
+		//Due to support changes, mavencentral no longer works. We can use the full URL instead. 
+		//not great safety wise, but this is for a private server. fuck it. 
+		//mavenCentral()
+		
+		maven {
+		 url = "http://repo.maven.apache.org/maven2"
+		}
+
 		maven {
 			http://maven.icm.edu.pl/artifactory/repo/
 		}
