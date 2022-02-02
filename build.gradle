@@ -3,13 +3,14 @@ buildscript {
 	//forge, maven and sonatype repos
 	repositories {
 		
+		
 		//mavenCentral()
 		//Due to support changes, mavencentral no longer works. We can use the full URL instead. 
 		//not great safety wise, but this is for a private server. fuck it. 
 		
 		maven {
 			name = "mavenCentral"
-			url = "http://repo.maven.apache.org/maven2"
+			url = "http://insecure.repo1.maven.org/maven2/"
 		}
 		
         maven {
@@ -80,7 +81,7 @@ repositories {
 		
 	maven {
 		name = "mavenCentral"
-		url = "http://repo.maven.apache.org/maven2"
+		url = "http://insecure.repo1.maven.org/maven2/"
 	}
 }
 configurations {
