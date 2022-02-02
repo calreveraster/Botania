@@ -43,7 +43,20 @@ public final class ConfigHandler {
 
 	public static boolean useAdaptativeConfig = true;
 
+	//Going to split up the shader config per-shader.
 	public static boolean useShaders = true;
+
+	public static boolean usePylonGlowShader = true;
+	public static boolean useEnchanterRuneShader = true;
+	public static boolean useManaPoolShader = true;
+	public static boolean useDopplegangerShader = true;
+	public static boolean useHaloShader = true;
+	public static boolean useDopplegangerBarShader = true;
+	public static boolean useTerraplateRuneShader = true;
+	public static boolean useFilmGrainShader = true;
+	public static boolean useGoldShader = true;
+	public static boolean useCategoryButtonShader = true;
+
 	public static boolean lexiconRotatingItems = true;
 	public static boolean lexiconJustifiedText = false;
 	public static boolean subtlePowerSystem = false;
@@ -126,8 +139,50 @@ public final class ConfigHandler {
 		useAdaptativeConfig = loadPropBool("adaptativeConfig.enabled", desc, useAdaptativeConfig);
 		adaptor = new ConfigAdaptor(useAdaptativeConfig);
 
+		//original shader set 
+		//Ill probably leave this as a master disable for now to avoid changing some other logic.
 		desc = "Set this to false to disable the use of shaders for some of the mod's renders.";
 		useShaders = loadPropBool("shaders.enabled", desc, useShaders);
+
+		/*
+		* New Shader sets
+		* These will replace the above option to individually disable certain shaders.
+		*/
+
+		desc = "Set this to false to disable the Pylon Glow Shader";
+		usePylonGlowShader = loadPropBool("pylonGlowShaders.enabled", desc, usePylonGlowShader);
+
+		desc = "Set this to false to disable the Enchanter Rune Shader";
+		useEnchanterRuneShader = loadPropBool("enchanterRuneShaders.enabled", desc, useEnchanterRuneShader);
+
+		desc = "Set this to false to disable the Mana Pool Shader";
+		useManaPoolShader = loadPropBool("manaPoolShaders.enabled", desc, useManaPoolShader);
+
+		desc = "Set this to false to disable the Doppleganger Shader";
+		useDopplegangerShader = loadPropBool("dopplegangerShaders.enabled", desc, useDopplegangerShader);
+
+		desc = "Set this to false to disable the Halo Shader";
+		useHaloShader = loadPropBool("haloShaders.enabled", desc, useHaloShader);
+
+		desc = "Set this to false to disable the Doppleganger Bar Shader";
+		useDopplegangerBarShader = loadPropBool("dopplegangerShaders.enabled", desc, useDopplegangerBarShader);
+
+		desc = "Set this to false to disable the Terraplate Rune Shader";
+		useTerraplateRuneShader = loadPropBool("terraplateRuneShaders.enabled", desc, useTerraplateRuneShader);
+
+		desc = "Set this to false to disable the Film Grain Shader";
+		useFilmGrainShader = loadPropBool("filmGrainShaders.enabled", desc, useFilmGrainShader);
+
+		desc = "Set this to false to disable the Gold Shader";
+		useGoldShader = loadPropBool("goldShaders.enabled", desc, useGoldShader);
+
+		desc = "Set this to false to disable the Film Grain Shader";
+		useCategoryButtonShader = loadPropBool("categoryButtonShaders.enabled", desc, useCategoryButtonShader);
+
+		/*
+		* End new Shader Configs
+		* You are now returned to your regularly scheduled config-ing
+		*/
 
 		desc = "Set this to false to disable the rotating items in the petal and rune entries in the Lexica Botania.";
 		lexiconRotatingItems = loadPropBool("lexicon.enable.rotatingItems", desc, lexiconRotatingItems);
@@ -296,11 +351,14 @@ public final class ConfigHandler {
 			config.save();
 	}
 
-	public static void loadPostInit() {
+	public static void loadPostInit() 
+	{
 		SheddingHandler.loadFromConfig(config);
 
 		if(config.hasChanged())
+		{
 			config.save();
+		}
 	}
 
 	public static int loadPropInt(String propName, String desc, int default_) {
@@ -371,7 +429,8 @@ public final class ConfigHandler {
 			try {
 				lastBuild = Integer.parseInt(lastVersion);
 				currentBuild = Integer.parseInt(LibMisc.BUILD);
-			} catch(NumberFormatException e) {
+			} 
+			catch(NumberFormatException e) {
 				this.enabled = false;
 			}
 		}

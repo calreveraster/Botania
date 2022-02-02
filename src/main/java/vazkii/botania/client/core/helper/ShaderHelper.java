@@ -48,17 +48,61 @@ public final class ShaderHelper {
 		if(!useShaders())
 			return;
 		
-		//Need to make this more shader friendly. 
-		//pylonGlow = createProgram(null, LibResources.SHADER_PYLON_GLOW_FRAG);
-		//enchanterRune = createProgram(null, LibResources.SHADER_ENCHANTER_RUNE_FRAG);
-		//manaPool = createProgram(null, LibResources.SHADER_MANA_POOL_FRAG);
-		doppleganger = createProgram(LibResources.SHADER_DOPLLEGANGER_VERT, LibResources.SHADER_DOPLLEGANGER_FRAG);
-		halo = createProgram(null, LibResources.SHADER_HALO_FRAG);
-		dopplegangerBar = createProgram(null, LibResources.SHADER_DOPLLEGANGER_BAR_FRAG);
-		terraPlateRune = createProgram(null, LibResources.SHADER_TERRA_PLATE_RUNE_FRAG);
-		filmGrain = createProgram(null, LibResources.SHADER_FILM_GRAIN_FRAG);
-		gold = createProgram(null, LibResources.SHADER_GOLD_FRAG);
-		categoryButton = createProgram(null, LibResources.SHADER_CATEGORY_BUTTON_FRAG);
+		/*
+		* Need to make this more shader friendly. 
+		* Implementing individual disablers at the config level. 
+		* No idea if this will work. Guess we'll find out.
+		*/
+
+		if (usePylonGlowShader())
+		{
+			pylonGlow = createProgram(null, LibResources.SHADER_PYLON_GLOW_FRAG);
+		}
+
+		if (useEnchanterRuneShader())
+		{
+			enchanterRune = createProgram(null, LibResources.SHADER_ENCHANTER_RUNE_FRAG);
+		}
+
+		if (useManaPoolShader())
+		{
+			manaPool = createProgram(null, LibResources.SHADER_MANA_POOL_FRAG);
+		}
+
+		if (useDopplegangerShader())
+		{
+			doppleganger = createProgram(LibResources.SHADER_DOPLLEGANGER_VERT, LibResources.SHADER_DOPLLEGANGER_FRAG);
+		}
+
+		if (useHaloShader())
+		{
+			halo = createProgram(null, LibResources.SHADER_HALO_FRAG);
+		}
+
+		if (useDopplegangerBarShader())
+		{
+			dopplegangerBar = createProgram(null, LibResources.SHADER_DOPLLEGANGER_BAR_FRAG);
+		}
+
+		if (useTerraPlateShader())
+		{
+			terraPlateRune = createProgram(null, LibResources.SHADER_TERRA_PLATE_RUNE_FRAG);
+		}
+
+		if (useFilmGrainShader())
+		{
+			filmGrain = createProgram(null, LibResources.SHADER_FILM_GRAIN_FRAG);
+		}
+
+		if (useGoldShader())
+		{
+			gold = createProgram(null, LibResources.SHADER_GOLD_FRAG);
+		}
+
+		if (useCategoryButtonShader())
+		{
+			categoryButton = createProgram(null, LibResources.SHADER_CATEGORY_BUTTON_FRAG);
+		}
 	}
 
 	public static void useShader(int shader, ShaderCallback callback) {
@@ -90,6 +134,11 @@ public final class ShaderHelper {
 
 	// Most of the code taken from the LWJGL wiki
 	// http://lwjgl.org/wiki/index.php?title=GLSL_Shaders_with_LWJGL
+
+	/*
+	* There's a chance I may need to do individual createProgams for each shader. 
+	* Just noting that for myself. 
+	*/
 
 	private static int createProgram(String vert, String frag) {
 		int vertId = 0, fragId = 0, program = 0;
