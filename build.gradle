@@ -164,7 +164,7 @@ dependencies {
 	
 	logger.lifecycle('Starting to compile baubles, codechicken, nei, fmp')
 	//compile files('Baubles-deobf.jar')
-	compile ":baubles-deobf.jar"
+	compile ":baubles-deobf"
 	logger.lifecycle('baubles done')
 	compile ":CodeChickenLib"
 	logger.lifecycle('CCL done')
