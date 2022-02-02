@@ -15,6 +15,4 @@ jobs:
       
       - name: Build with Gradle
         run: ./gradlew build
-        arguments: 
-          -Dmaven.wagon.http.ssl.insecure=true 
-          -Dmaven.wagon.http.ssl.allowall=true
+
