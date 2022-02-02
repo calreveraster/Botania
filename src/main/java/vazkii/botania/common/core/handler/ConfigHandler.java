@@ -42,7 +42,7 @@ public final class ConfigHandler
 		public static final String CATEGORY_SHADERS = "Shaders";
 	}
 
-	private static String directory;
+	//private static String directory;
 	public static Configuration config;
 	public static ConfigAdaptor adaptor;
 
@@ -131,7 +131,8 @@ public final class ConfigHandler
 	public static int potionIDBloodthirst = 94;
 	public static int potionIDAllure = 95;
 	public static int potionIDClear = 96;
-
+	
+	
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
 
@@ -404,9 +405,9 @@ public final class ConfigHandler
 	}
 
 
-	public static boolean loadPropBool(String propName, String desc, String configCat, boolean default_) 
+	public static boolean loadPropBoolShaders(String propName, String desc, boolean default_) 
 	{
-		Property prop = config.get(Configuration.configCat, propName, default_);
+		Property prop = config.get(Configuration.CATEGORY_SHADERS, propName, default_);
 		prop.comment = desc;
 
 		if(adaptor != null)
