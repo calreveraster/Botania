@@ -13,7 +13,7 @@ buildscript {
 			url = "http://insecure.repo1.maven.org/maven2/"
 		}
 		
-		/*
+		
         maven {
 		
             name = "forge"
@@ -22,20 +22,20 @@ buildscript {
         maven {
             		
 		name = "sonatype"
-            url = "http://oss.sonatype.org/content/repositories/snapshots/"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
-		*/
+		
     }
 	
 	//associated dependencies
     dependencies {
 
-		classpath fileTree(include: ['*.jar'], dir: 'dependencies')
-		classpath files('dependencies/ForgeGradle-1.2.0.7777.jar')
+		//classpath fileTree(include: ['*.jar'], dir: 'dependencies')
+		//classpath files('dependencies/ForgeGradle-1.2.0.7777.jar')
 
 		
 		//classpath 'net.minecraftforge.gradle:ForgeGradle:1.2.777'	
-		//classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
 		//classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '1.2-SNAPSHOT'
 		//classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
         	//changing = true
@@ -59,9 +59,10 @@ apply plugin: 'curseforge'
 //sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
 
 //we'll try this instead...
-//sourceCompatibility = 1.6
-//targetCompatibility = 1.6
-
+compileJava {
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+}
 //sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
 
 allprojects {
