@@ -50,8 +50,10 @@ repositories {
 
 //we'll try this instead...
 apply plugin: 'java'
-targetCompatibility = 1.6
-sourceCompatibility = 1.6
+//sourceCompatibility = 1.6
+//targetCompatibility = 1.6
+
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.6'
 
 allprojects {
     repositories {
