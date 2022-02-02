@@ -16,19 +16,20 @@ buildscript {
         maven {
 		
             name = "forge"
-            url = "http://maven.minecraftforge.net/"
+            url = "http://files.minecraftforge.net/"
         }
         maven {
             		
 		name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            url = "http://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
 	
 	//associated dependencies
     dependencies {
-        	
-		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+
+		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2.777'	
+		//classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
 		//classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '1.2-SNAPSHOT'
 		//classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
         	//changing = true
