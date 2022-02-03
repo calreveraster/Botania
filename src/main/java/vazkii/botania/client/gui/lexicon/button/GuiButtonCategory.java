@@ -10,7 +10,7 @@
  * 
  * ==============================================
  * Last Edited: 2/3/22 by Cal Reveraster
- *	• Added support for more modern OpenGL
+ *	• UseShader Update. Eventually will move to gl20
  * ==============================================
  * 
  */
@@ -59,18 +59,18 @@ public class GuiButtonCategory extends GuiButtonLexicon
 			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB);
 			
 			//gl11 -> gl20
-			GL20.glBindTexture(GL11.GL_TEXTURE_2D, r.getTexture(resource).getGlTextureId());
-			//ARBShaderObjects.glUniform1iARB(imageUniform, 0);
-			GL20.glUniform1i(imageUniform, 0);
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, r.getTexture(resource).getGlTextureId());
+			ARBShaderObjects.glUniform1iARB(imageUniform, 0);
+			//GL20.glUniform1i(imageUniform, 0);
 			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
-			GL20.glEnable(GL20.GL_TEXTURE_2D);
-			GL20.glGetInteger(GL20.GL_TEXTURE_BINDING_2D);
-			GL20.glBindTexture(GL20.GL_TEXTURE_2D, r.getTexture(stencilResource).getGlTextureId());
+			GL11.glEnable(GL11.GL_TEXTURE_2D);
+			GL11.glGetInteger(GL20.GL_TEXTURE_BINDING_2D);
+			GL11.glBindTexture(GL20.GL_TEXTURE_2D, r.getTexture(stencilResource).getGlTextureId());
 			//ARBShaderObjects.glUniform1iARB(maskUniform, ConfigHandler.glSecondaryTextureUnit);
-			GL20.glUniform1i(maskUniform, ConfigHandler.glSecondaryTextureUnit);
+			GL11.glUniform1i(maskUniform, ConfigHandler.glSecondaryTextureUnit);
 
 			//ARBShaderObjects.glUniform1fARB(heightMatchUniform, heightMatch);
-			GL20.glUniform1f(heightMatchUniform,heightMatch);
+			GL11.glUniform1f(heightMatchUniform,heightMatch);
 		}
 	};
 
@@ -120,11 +120,11 @@ public class GuiButtonCategory extends GuiButtonLexicon
 		float s = 1F / 32F;
 		
 		//gl11 -> gl20
-		GL20.glPushMatrix();
-		GL20.glEnable(GL20.GL_BLEND);
-		GL20.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-		GL20.glScalef(0.5F, 0.5F, 0.5F);
-		GL20.glColor4f(1F, 1F, 1F, 1F);
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GL11.glScalef(0.5F, 0.5F, 0.5F);
+		GL11.glColor4f(1F, 1F, 1F, 1F);
 
 		if(!boundStencil) 
 		{ 
@@ -140,7 +140,7 @@ public class GuiButtonCategory extends GuiButtonLexicon
 		if(shaders) 
 		{
 			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
-			texture = GL20.glGetInteger(GL20.GL_TEXTURE_BINDING_2D);
+			texture = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
 		}
 
 		ShaderHelper.useShader(ShaderHelper.categoryButton, shaderCallback);
@@ -149,11 +149,11 @@ public class GuiButtonCategory extends GuiButtonLexicon
 
 		if(shaders) {
 			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
-			GL20.glBindTexture(GL20.GL_TEXTURE_2D, texture);
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
 			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB);
 		}
 
-		GL20.glPopMatrix();
+		GL11.glPopMatrix();
 
 		if(inside)
 			gui.categoryHighlight = StatCollector.translateToLocal(getTooltipText());
