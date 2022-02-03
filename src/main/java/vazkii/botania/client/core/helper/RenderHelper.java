@@ -65,7 +65,7 @@ public final class RenderHelper
 	public static void renderTooltip(int x, int y, List<String> tooltipData, int color, int color2) 
 	{
 		//check whether lighting is a thing. if it is, disable it.
-		boolean lighting = GL20.glGetBoolean(GL11.GL_LIGHTING);
+		boolean lighting = GL11.glGetBoolean(GL11.GL_LIGHTING);
 		if(lighting)
 			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
