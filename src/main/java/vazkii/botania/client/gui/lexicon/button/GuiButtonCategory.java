@@ -66,8 +66,8 @@ public class GuiButtonCategory extends GuiButtonLexicon
 			GL11.glEnable(GL11.GL_TEXTURE_2D);
 			GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, r.getTexture(stencilResource).getGlTextureId());
-			//ARBShaderObjects.glUniform1iARB(maskUniform, ConfigHandler.glSecondaryTextureUnit);
-			GL11.glUniform1i(maskUniform, ConfigHandler.glSecondaryTextureUnit);
+			ARBShaderObjects.glUniform1iARB(maskUniform, ConfigHandler.glSecondaryTextureUnit);
+			//GL11.glUniform1i(maskUniform, ConfigHandler.glSecondaryTextureUnit);
 
 			ARBShaderObjects.glUniform1fARB(heightMatchUniform, heightMatch);
 			//GL20.glUniform1f(heightMatchUniform,heightMatch);
