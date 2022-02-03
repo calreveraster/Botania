@@ -7,6 +7,12 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Nov 8, 2014, 7:20:26 PM (GMT)]
+ *
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *	• Changed shadersAreUsable
+ * ==============================================
+ *
  */
 package vazkii.botania.client.render.tile;
 
@@ -44,7 +50,7 @@ public class RenderTileTerraPlate extends TileEntitySpecialRenderer {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		float alpha = (float) ((Math.sin((ClientTickHandler.ticksInGame + f) / 8D) + 1D) / 5D + 0.6D) * alphaMod;
-		if(ShaderHelper.useShaders())
+		if(ShaderHelper.shadersAreUsable())
 			GL11.glColor4f(1F, 1F, 1F, alpha);
 		else {
 			int light = 15728880;

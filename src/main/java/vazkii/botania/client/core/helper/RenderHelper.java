@@ -7,6 +7,12 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Jan 19, 2014, 5:40:38 PM (GMT)]
+ * 
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *	• Added support for more modern OpenGL
+ * ==============================================
+ * 
  */
 package vazkii.botania.client.core.helper;
 
@@ -59,7 +65,7 @@ public final class RenderHelper
 	public static void renderTooltip(int x, int y, List<String> tooltipData, int color, int color2) 
 	{
 		//check whether lighting is a thing. if it is, disable it.
-		boolean lighting = GL20.glGetBoolean(GL20.GL_LIGHTING);
+		boolean lighting = GL20.glGetBoolean(GL11.GL_LIGHTING);
 		if(lighting)
 			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 

@@ -7,6 +7,12 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Mar 15, 2014, 5:04:42 PM (GMT)]
+ *
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *	• Changed shadersAreUsable
+ * ==============================================
+ *
  */
 package vazkii.botania.client.render.tile;
 
@@ -72,7 +78,7 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 		float alpha = (float) ((Math.sin((ClientTickHandler.ticksInGame + f) / 8D) + 1D) / 5D + 0.4D) * alphaMod;
 
 		if(alpha > 0) {
-			if(ShaderHelper.useShaders())
+			if(ShaderHelper.shadersAreUsable())
 				GL11.glColor4f(1F, 1F, 1F, alpha);
 			else {
 				int light = 15728880;

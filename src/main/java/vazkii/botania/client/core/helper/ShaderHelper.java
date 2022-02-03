@@ -7,6 +7,12 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Apr 9, 2014, 11:20:26 PM (GMT)]
+ * 
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *	• Added support for more modern OpenGL
+ * ==============================================
+ *
  */
 
  /*
@@ -153,7 +159,7 @@ public final class ShaderHelper
 			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
 			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
 			int time = GL20.glGetUniformLocation(shader, "time");
-			GL20.glUniform1(time, ClientTickHandler.ticksInGame);
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
 
 			if(callback != null)
 			{
@@ -284,7 +290,7 @@ public final class ShaderHelper
 		GL20.glLinkProgram(program);
 
 		/*
-		* This block checks for compat with an old gl version.Rewritten below.
+		* This block checks for compat with an old gl version.
 		* 
 		*
 		if(ARBShaderObjects.glGetObjectParameteriARB(program, ARBShaderObjects.GL_OBJECT_LINK_STATUS_ARB) == GL11.GL_FALSE) 
@@ -294,6 +300,9 @@ public final class ShaderHelper
 			return 0;
 		}
 		*/
+		
+		//This is the new check, Ill figure it out later.
+		/*
 
 		ontextCapabilities caps = GLContext.getCapabilities();
 
@@ -311,7 +320,9 @@ public final class ShaderHelper
 				return 0;
 			}
 		}
-		
+		*/
+
+
 		//GL20 update
 		//ARBShaderObjects.glValidateProgramARB(program);
 		GL20.glValidateProgram(program);
