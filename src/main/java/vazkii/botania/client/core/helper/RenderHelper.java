@@ -23,39 +23,48 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 
 import vazkii.botania.client.core.handler.ClientTickHandler;
 import vazkii.botania.client.lib.LibResources;
 
-public final class RenderHelper {
+public final class RenderHelper 
+{
 
-	public static void renderTooltip(int x, int y, List<String> tooltipData) {
+	public static void renderTooltip(int x, int y, List<String> tooltipData) 
+	{
 		int color = 0x505000ff;
 		int color2 = 0xf0100010;
 
 		renderTooltip(x, y, tooltipData, color, color2);
 	}
 
-	public static void renderTooltipOrange(int x, int y, List<String> tooltipData) {
+	public static void renderTooltipOrange(int x, int y, List<String> tooltipData) 
+	{
 		int color = 0x50a06600;
 		int color2 = 0xf01e1200;
 
 		renderTooltip(x, y, tooltipData, color, color2);
 	}
 
-	public static void renderTooltipGreen(int x, int y, List<String> tooltipData) {
+	public static void renderTooltipGreen(int x, int y, List<String> tooltipData) 
+	{
 		int color = 0x5000a000;
 		int color2 = 0xf0001e00;
 
 		renderTooltip(x, y, tooltipData, color, color2);
 	}
 
-	public static void renderTooltip(int x, int y, List<String> tooltipData, int color, int color2) {
-		boolean lighting = GL11.glGetBoolean(GL11.GL_LIGHTING);
+	//gl20
+	public static void renderTooltip(int x, int y, List<String> tooltipData, int color, int color2) 
+	{
+		//check whether lighting is a thing. if it is, disable it.
+		boolean lighting = GL20.glGetBoolean(GL20.GL_LIGHTING);
 		if(lighting)
 			net.minecraft.client.renderer.RenderHelper.disableStandardItemLighting();
 
-		if (!tooltipData.isEmpty()) {
+		if (!tooltipData.isEmpty()) 
+		{
 			int var5 = 0;
 			int var6;
 			int var7;
