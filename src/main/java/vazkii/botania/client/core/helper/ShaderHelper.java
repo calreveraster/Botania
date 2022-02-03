@@ -269,13 +269,13 @@ public final class ShaderHelper
 
 		if(vert != null)
 		{
-			GL20.glAttachShader(program, vertId)
+			GL20.glAttachShader(program, vertId);
 			//ARBShaderObjects.glAttachObjectARB(program, vertId);
 		}
 
 		if(frag != null)
 		{
-			GL20.glAttachShader(program, vertId)
+			GL20.glAttachShader(program, vertId);
 			//ARBShaderObjects.glAttachObjectARB(program, fragId);
 		}
 
