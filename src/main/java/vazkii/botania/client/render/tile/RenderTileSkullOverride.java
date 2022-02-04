@@ -44,25 +44,33 @@ public class RenderTileSkullOverride extends TileEntitySkullRenderer {
 		render(p_147500_1_, (float) p_147500_2_, (float) p_147500_4_, (float) p_147500_6_, p_147500_1_.getBlockMetadata() & 7, p_147500_1_.func_145906_b() * 360 / 16.0F, p_147500_1_.func_145904_a(), p_147500_1_.func_152108_a());
 	}
 
-	public void render(TileEntitySkull skull, float par1, float par2, float par3, int par4, float par5, int par6, GameProfile gameProfile) {
+	public void render(TileEntitySkull skull, float par1, float par2, float par3, int par4, float par5, int par6, GameProfile gameProfile) 
+	{
 		boolean gaia = skull instanceof TileGaiaHead;
-		if(par6 == 3 || gaia) {
+		if(par6 == 3 || gaia) 
+		{
 			ResourceLocation resourcelocation = AbstractClientPlayer.locationStevePng;
 			Minecraft minecraft = Minecraft.getMinecraft();
 			if(gaia)
+			{
 				resourcelocation = minecraft.thePlayer.getLocationSkin();
-			else if(gameProfile != null) {
+			}
+			else if(gameProfile != null) 
+			{
 				Map map = minecraft.func_152342_ad().func_152788_a(gameProfile);
 
-				if (map.containsKey(MinecraftProfileTexture.Type.SKIN)) {
+				if (map.containsKey(MinecraftProfileTexture.Type.SKIN)) 
+				{
 					resourcelocation = minecraft.func_152342_ad().func_152792_a((MinecraftProfileTexture)map.get(MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN);
 				}
 			}
 			bindTexture(resourcelocation);
 			GL11.glPushMatrix();
 			GL11.glDisable(GL11.GL_CULL_FACE);
-			if (par4 != 1) {
-				switch (par4) {
+			if (par4 != 1) 
+			{
+				switch (par4) 
+				{
 				case 2:
 					GL11.glTranslatef(par1 + 0.5F, par2 + 0.25F, par3 + 0.74F);
 					break;
@@ -79,7 +87,8 @@ public class RenderTileSkullOverride extends TileEntitySkullRenderer {
 					GL11.glTranslatef(par1 + 0.26F, par2 + 0.25F, par3 + 0.5F);
 					par5 = 90.0F;
 				}
-			} else GL11.glTranslatef(par1 + 0.5F, par2, par3 + 0.5F);
+			} 
+			else GL11.glTranslatef(par1 + 0.5F, par2, par3 + 0.5F);
 
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			GL11.glScalef(-1.0F, -1.0F, 1.0F);

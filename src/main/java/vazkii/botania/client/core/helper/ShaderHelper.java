@@ -200,14 +200,15 @@ public final class ShaderHelper
 		}
 
 		//FMLLog.log(Level.INFO, "[BOTANIA] PYLON GLOW ENVOKER TRIGGERED!...");
-		GL20.glUseProgram(shader);
+		//GL20.glUseProgram(shader);
+		ARBShaderObjects.glUseProgramObjectARB(shader);
 
 		if(shader != 0) 
 		{
-			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
-			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
-			int time = GL20.glGetUniformLocation(shader, "time");
-			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+			int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			//int time = GL20.glGetUniformLocation(shader, "time");
+			//GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
 
 			if(callback != null)
 			{
@@ -336,14 +337,15 @@ public final class ShaderHelper
 		}
 
 		//FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER BAR ENVOKER TRIGGERED!...");
-		GL20.glUseProgram(shader);
+		//GL20.glUseProgram(shader);
+		ARBShaderObjects.glUseProgramObjectARB(shader);
 
 		if(shader != 0) 
 		{
-			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
-			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
-			int time = GL20.glGetUniformLocation(shader, "time");
-			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+			int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			//int time = GL20.glGetUniformLocation(shader, "time");
+			//GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
 
 			if(callback != null)
 			{
@@ -393,6 +395,7 @@ public final class ShaderHelper
 
 	//==============================================
 	//		TERRAPLATE ENVOKER
+	//		(implemented)
 	//==============================================
 
 	public static void useTerraplateRuneShader(int shader, ShaderCallback callback)
@@ -436,14 +439,15 @@ public final class ShaderHelper
 		}
 
 		//FMLLog.log(Level.INFO, "[BOTANIA] FILM GRAIN ENVOKER TRIGGERED!...");
-		GL20.glUseProgram(shader);
+		//GL20.glUseProgram(shader);
+		ARBShaderObjects.glUseProgramObjectARB(shader);
 
 		if(shader != 0) 
 		{
-			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
-			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
-			int time = GL20.glGetUniformLocation(shader, "time");
-			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+			int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			//int time = GL20.glGetUniformLocation(shader, "time");
+			//GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
 
 			if(callback != null)
 			{
