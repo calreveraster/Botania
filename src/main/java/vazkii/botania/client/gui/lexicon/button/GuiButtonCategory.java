@@ -135,7 +135,7 @@ public class GuiButtonCategory extends GuiButtonLexicon
 		mc.renderEngine.bindTexture(resource);
 
 		int texture = 0;
-		boolean shaders = ShaderHelper.shadersAreUsable();
+		boolean shaders = ShaderHelper.categoryButtonUsable();
 
 		if(shaders) 
 		{
@@ -147,7 +147,8 @@ public class GuiButtonCategory extends GuiButtonLexicon
 		RenderHelper.drawTexturedModalRect(xPosition * 2, yPosition * 2, zLevel * 2, 0, 0, 32, 32, s, s);
 		ShaderHelper.releaseCategoryButtonShader();
 
-		if(shaders) {
+		if(shaders) 
+		{
 			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture);
 			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB);

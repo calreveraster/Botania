@@ -302,7 +302,8 @@ public final class ShaderHelper
 		}
 
 		//FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER ENVOKER TRIGGERED!...");
-		GL11.glUseProgramARB(shader);
+		//GL20.glUseProgram(shader);
+		ARBShaderObjects.glUseProgramObjectARB(shader)
 
 		if(shader != 0) 
 		{

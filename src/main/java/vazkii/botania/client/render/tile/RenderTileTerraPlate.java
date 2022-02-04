@@ -63,9 +63,9 @@ public class RenderTileTerraPlate extends TileEntitySpecialRenderer {
 
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
-		ShaderHelper.useTerraplateShader(ShaderHelper.terraPlateRune);
+		ShaderHelper.useTerraplateRuneShader(ShaderHelper.terraPlateRune);
 		renderIcon(0, 0, BlockTerraPlate.overlay, 1, 1, 240);
-		ShaderHelper.releaseTerraplateShader();
+		ShaderHelper.releaseTerraplateRuneShader();
 
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glDisable(GL11.GL_BLEND);
