@@ -11,6 +11,7 @@
  * ==============================================
  * Last Edited: 2/3/22 by Cal Reveraster
  *	• Changed shadersAreUsable
+ *  • Added shader config specifically for this tile's shader. 
  * ==============================================
  *
  */
@@ -50,7 +51,7 @@ public class RenderTileTerraPlate extends TileEntitySpecialRenderer {
 		GL11.glColor4f(1F, 1F, 1F, 1F);
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		float alpha = (float) ((Math.sin((ClientTickHandler.ticksInGame + f) / 8D) + 1D) / 5D + 0.6D) * alphaMod;
-		if(ShaderHelper.shadersAreUsable())
+		if(ShaderHelper.terraplateRuneUsable())
 			GL11.glColor4f(1F, 1F, 1F, alpha);
 		else {
 			int light = 15728880;
@@ -62,9 +63,9 @@ public class RenderTileTerraPlate extends TileEntitySpecialRenderer {
 
 		Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
-		ShaderHelper.useShader(ShaderHelper.terraPlateRune);
+		ShaderHelper.useTerraplateShader(ShaderHelper.terraPlateRune);
 		renderIcon(0, 0, BlockTerraPlate.overlay, 1, 1, 240);
-		ShaderHelper.releaseShader();
+		ShaderHelper.releaseTerraplateShader();
 
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glDisable(GL11.GL_BLEND);

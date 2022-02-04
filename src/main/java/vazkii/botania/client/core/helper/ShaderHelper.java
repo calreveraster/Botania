@@ -302,14 +302,14 @@ public final class ShaderHelper
 		}
 
 		//FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER ENVOKER TRIGGERED!...");
-		GL20.glUseProgram(shader);
+		GL11.glUseProgramARB(shader);
 
 		if(shader != 0) 
 		{
-			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
-			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
-			int time = GL20.glGetUniformLocation(shader, "time");
-			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+			int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			//int time = GL20.glGetUniformLocation(shader, "time");
+			//GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
 
 			if(callback != null)
 			{

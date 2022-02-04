@@ -7,6 +7,12 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [? (GMT)]
+ *
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *  • Added shader config specifically for this tile's shader. 
+ * ==============================================
+ *
  */
 package vazkii.botania.client.render.tile;
 
@@ -79,12 +85,12 @@ public class RenderTileSkullOverride extends TileEntitySkullRenderer {
 			GL11.glScalef(-1.0F, -1.0F, 1.0F);
 			GL11.glEnable(GL11.GL_ALPHA_TEST);
 			if(gaia)
-				ShaderHelper.useShader(ShaderHelper.doppleganger, RenderDoppleganger.defaultCallback);
+				ShaderHelper.useDopplegangerShader(ShaderHelper.doppleganger, RenderDoppleganger.defaultCallback);
 
 			modelSkull.render(null, 0F, 0F, 0F, par5, 0F, 0.0625F);
 
 			if(gaia)
-				ShaderHelper.releaseShader();
+				ShaderHelper.releaseDopplegangerShader();
 			GL11.glPopMatrix();
 		} else super.func_152674_a(par1, par2, par3, par4, par5, par6, gameProfile);
 	}

@@ -7,6 +7,13 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Jul 18, 2014, 10:48:46 PM (GMT)]
+ *
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *	• Changed shadersAreUsable
+ *  • Removed some potentially impactful shader code. 
+ * ==============================================
+ *
  */
 package vazkii.botania.client.render.tile;
 
@@ -60,28 +67,33 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 		mc.renderEngine.bindTexture(ClientProxy.dootDoot ? textureHalloween : texture);
 		String name = potato.name.toLowerCase();
 
+
+		//removing things that could conflict with shaders :( sorry, tiny potato. 
+		/*
 		boolean usedShader = false;
-		if(name.startsWith("gaia ")) {
-			ShaderHelper.useShader(ShaderHelper.doppleganger);
+		if(name.startsWith("gaia ")) 
+		{
+			ShaderHelper.useDopplegangerShader(ShaderHelper.doppleganger);
 			name = name.substring(5);
 			usedShader = true;
 		} else if(name.startsWith("hot ")) {
-			ShaderHelper.useShader(ShaderHelper.halo);
+			ShaderHelper.useHaloShader(ShaderHelper.halo);
 			name = name.substring(4);
 			usedShader = true;
 		} else if(name.startsWith("magic ")) {
-			ShaderHelper.useShader(ShaderHelper.enchanterRune);
+			ShaderHelper.useEnchanterRuneShader(ShaderHelper.enchanterRune);
 			name = name.substring(6);
 			usedShader = true;
 		} else if(name.startsWith("gold ")) {
-			ShaderHelper.useShader(ShaderHelper.gold);
+			ShaderHelper.useDopplegangerShader(ShaderHelper.gold);
 			name = name.substring(5);
 			usedShader = true;
 		} else if(name.startsWith("snoop ")) {
-			ShaderHelper.useShader(ShaderHelper.terraPlateRune);
+			ShaderHelper.useTerraplateRuneShader(ShaderHelper.terraPlateRune);
 			name = name.substring(6);
 			usedShader = true;
 		}
+		*/
 
 		GL11.glTranslatef(0.5F, 1.5F, 0.5F);
 		GL11.glScalef(1F, -1F, -1F);
@@ -120,9 +132,10 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 			model.render();
 		}
 
+		/*
 		if(usedShader)
 			ShaderHelper.releaseShader();
-
+		*/
 		GL11.glPopMatrix();
 
 		if(!name.isEmpty()) {
@@ -317,9 +330,9 @@ public class RenderTileTinyPotato extends TileEntitySpecialRenderer {
 					mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 					GL11.glRotatef(180F, 1F, 0F, 0F);
 					GL11.glTranslatef(-0.5F, -0.5F, 0F);
-					ShaderHelper.useShader(ShaderHelper.gold);
-					renderIcon(icon);
-					ShaderHelper.releaseShader();
+					//ShaderHelper.useGoldShader(ShaderHelper.gold);
+					//renderIcon(icon);
+					//ShaderHelper.releaseGoldShader();
 				}
 			}
 
