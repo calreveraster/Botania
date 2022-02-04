@@ -137,6 +137,7 @@ public class RenderTilePool extends TileEntitySpecialRenderer {
 			GL11.glRotatef(90F, 1F, 0F, 0F);
 			GL11.glScalef(s, s, s);
 
+
 			ShaderHelper.useShader(ShaderHelper.manaPool);
 			renderIcon(0, 0, BlockPool.manaIcon, 16, 16, 240);
 			ShaderHelper.releaseShader();

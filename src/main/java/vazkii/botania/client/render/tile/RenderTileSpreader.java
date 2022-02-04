@@ -34,7 +34,8 @@ import vazkii.botania.client.model.ModelSpreader;
 import vazkii.botania.client.render.item.RenderLens;
 import vazkii.botania.common.block.tile.mana.TileSpreader;
 
-public class RenderTileSpreader extends TileEntitySpecialRenderer {
+public class RenderTileSpreader extends TileEntitySpecialRenderer 
+{
 
 	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_SPREADER);
 	private static final ResourceLocation textureRs = new ResourceLocation(LibResources.MODEL_SPREADER_REDSTONE);

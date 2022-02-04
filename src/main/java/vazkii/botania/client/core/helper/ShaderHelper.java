@@ -11,6 +11,7 @@
  * ==============================================
  * Last Edited: 2/3/22 by Cal Reveraster
  *	• Added support for more modern OpenGL
+ *  • Added initial logic for individual shader envocation
  * ==============================================
  *
  */
@@ -63,6 +64,12 @@ public final class ShaderHelper
 	public static int gold = 0;
 	public static int categoryButton = 0;
 
+	/*
+	*============================================================================
+	*                 INIT
+	*============================================================================
+	*/
+
 	public static void initShaders() 
 	{
 		FMLLog.log(Level.INFO, "[BOTANIA] Shaders system initializing...");
@@ -79,59 +86,59 @@ public final class ShaderHelper
 		* No idea if this will work. Guess we'll find out.
 		*/
 
-		if (usePylonGlowShader())
+		if (pylonGlowUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Pylong Glow shader...");
 			pylonGlow = createProgram(null, LibResources.SHADER_PYLON_GLOW_FRAG);
 		}
 
-		if (useEnchanterRuneShader())
+		if (enchanterRuneUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Enchanter Rune shader...");
 			enchanterRune = createProgram(null, LibResources.SHADER_ENCHANTER_RUNE_FRAG);
 		}
 
-		if (useManaPoolShader())
+		if (manaPoolUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Mana Pool shader...");
 			manaPool = createProgram(null, LibResources.SHADER_MANA_POOL_FRAG);
 		}
 
-		if (useDopplegangerShader())
+		if (dopplegangerShaderUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Doppleganger shader...");
 			doppleganger = createProgram(LibResources.SHADER_DOPLLEGANGER_VERT, LibResources.SHADER_DOPLLEGANGER_FRAG);
 		}
 
-		if (useHaloShader())
+		if (haloShaderUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Halo shader...");
 			halo = createProgram(null, LibResources.SHADER_HALO_FRAG);
 		}
 
-		if (useDopplegangerBarShader())
+		if (dopplegangerBarUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Bar shader...");
 			dopplegangerBar = createProgram(null, LibResources.SHADER_DOPLLEGANGER_BAR_FRAG);
 		}
 
-		if (useTerraplateRuneShader())
+		if (terraplateRuneUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Terraplate shader...");
 			terraPlateRune = createProgram(null, LibResources.SHADER_TERRA_PLATE_RUNE_FRAG);
 		}
 
-		if (useFilmGrainShader())
+		if (filmGrainUsable())
 		{
 			filmGrain = createProgram(null, LibResources.SHADER_FILM_GRAIN_FRAG);
 		}
 
-		if (useGoldShader())
+		if (goldUsable())
 		{
 			gold = createProgram(null, LibResources.SHADER_GOLD_FRAG);
 		}
 
-		if (useCategoryButtonShader())
+		if (categoryButtonUsable())
 		{
 			categoryButton = createProgram(null, LibResources.SHADER_CATEGORY_BUTTON_FRAG);
 		}
@@ -143,6 +150,10 @@ public final class ShaderHelper
 	*============================================================================
 	*/
 
+	//==============================================
+	//		GENERAL SHADER ENVOKER
+	//==============================================
+
 	//GL20 done
 	public static void useShader(int shader, ShaderCallback callback) 
 	{
@@ -151,7 +162,9 @@ public final class ShaderHelper
 			return;
 		}
 
+		FMLLog.log(Level.INFO, "[BOTANIA] SOMETHING JUST TRIGGERED THE GENERAL SHADER ENVOKER. YOU MISSED SOMETHING.");
 		GL20.glUseProgram(shader);
+		
 		//ARBShaderObjects.glUseProgramObjectARB(shader);
 
 		if(shader != 0) 
@@ -173,11 +186,51 @@ public final class ShaderHelper
 		useShader(shader, null);
 	}
 
+	//==============================================
+	//		PYLON GLOW ENVOKER
+	//==============================================
+	
+	public static void usePylonGlow(int shader, ShaderCallback callback)
+	{
+		if(!pylonGlowUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] PYLON GLOW ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void usePylonGlow(int shader) 
+	{
+		usePylonGlow(shader, null);
+	}
+
+	//==============================================
+	//		YEET SHADERS
+	//==============================================
+
 	public static void releaseShader() 
 	{
 		useShader(0);
 	}
-
+	public static void releasePylongGlow() 
+	{
+		usePylonGlow(0);
+	}
 
 	//renamed from useShaders to be less confusing
 	public static boolean shadersAreUsable() 
@@ -192,52 +245,52 @@ public final class ShaderHelper
 	* ============================================================================
 	*/
 
-	public static boolean usePylonGlowShader() 
+	public static boolean pylonGlowUsable() 
 	{
 		return ConfigHandler.usePylonGlowShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean useEnchanterRuneShader() 
+	public static boolean enchanterRuneUsable() 
 	{
 		return ConfigHandler.useEnchanterRuneShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean useManaPoolShader() 
+	public static boolean manaPoolUsable() 
 	{
 		return ConfigHandler.useManaPoolShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean useDopplegangerShader() 
+	public static boolean dopplegangerUsable() 
 	{
 		return ConfigHandler.useDopplegangerShader && OpenGlHelper.shadersSupported;
 	}
 
-		public static boolean useHaloShader() 
+		public static boolean haloShaderUsable() 
 	{
 		return ConfigHandler.useHaloShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean useDopplegangerBarShader() 
+	public static boolean dopplegangerBarUsable() 
 	{
 		return ConfigHandler.useDopplegangerBarShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean useTerraplateRuneShader() 
+	public static boolean terraplateRuneUsable() 
 	{
 		return ConfigHandler.useTerraplateRuneShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean useFilmGrainShader() 
+	public static boolean filmGrainUsable() 
 	{
 		return ConfigHandler.useFilmGrainShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean useGoldShader() 
+	public static boolean goldSUsable() 
 	{
 		return ConfigHandler.useGoldShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean useCategoryButtonShader() 
+	public static boolean categoryButtonUsable() 
 	{
 		return ConfigHandler.usePylonGlowShader && OpenGlHelper.shadersSupported;
 	}

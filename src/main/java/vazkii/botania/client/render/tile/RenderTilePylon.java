@@ -46,46 +46,73 @@ public class RenderTilePylon extends TileEntitySpecialRenderer {
 	public static boolean pink = false;
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float pticks) {
+	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float pticks) 
+	{
+		//model handling
 		if(model == null)
+		{
 			model = ConfigHandler.oldPylonModel ? new ModelPylonOld() : new ModelPylon();
+		}
 
 			GL11.glPushMatrix();
 			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+
 			float a = MultiblockRenderHandler.rendering ? 0.6F : 1F;
 			GL11.glColor4f(1F, 1F, 1F, a);
-			if(tileentity.getWorldObj() != null) {
+
+			//figure out which pylon this is.
+			if(tileentity.getWorldObj() != null) 
+			{
 				green = tileentity.getBlockMetadata() == 1;
 				pink = tileentity.getBlockMetadata() == 2;
 			}
 
+			//bind textures
 			if(ConfigHandler.oldPylonModel)
+			{
 				Minecraft.getMinecraft().renderEngine.bindTexture(pink ? texturePinkOld : green ? textureGreenOld : textureOld);
-			else Minecraft.getMinecraft().renderEngine.bindTexture(pink ? texturePink : green ? textureGreen : texture);
+			}
+			else 
+			{
+				Minecraft.getMinecraft().renderEngine.bindTexture(pink ? texturePink : green ? textureGreen : texture);
+			}
 
 			double worldTime = tileentity.getWorldObj() == null ? 0 : (double) (ClientTickHandler.ticksInGame + pticks);
 
+			//coordinates. Rotation?
 			if(tileentity != null)
+			{
 				worldTime += new Random(tileentity.xCoord ^ tileentity.yCoord ^ tileentity.zCoord).nextInt(360);
+			}
 
-			if(ConfigHandler.oldPylonModel) {
+			if(ConfigHandler.oldPylonModel) 
+			{
 				GL11.glTranslated(d0 + 0.5, d1 + 2.2, d2 + 0.5);
 				GL11.glScalef(1F, -1.5F, -1F);
-			} else {
+			} 
+			else 
+			{
 				GL11.glTranslated(d0 + 0.2 + (green ? -0.1 : 0), d1 + 0.05, d2 + 0.8 + (green ? 0.1 : 0));
 				float scale = green ? 0.8F : 0.6F;
 				GL11.glScalef(scale, 0.6F, scale);
 			}
 
-			if(!green) {
+			//green one handled differently
+			if(!green) 
+			{
 				GL11.glPushMatrix();
 				if(!ConfigHandler.oldPylonModel)
+				{
 					GL11.glTranslatef(0.5F, 0F, -0.5F);
+				}
+
 				GL11.glRotatef((float) worldTime * 1.5F, 0F, 1F, 0F);
 				if(!ConfigHandler.oldPylonModel)
+				{
 					GL11.glTranslatef(-0.5F, 0F, 0.5F);
+				}
 
 				model.renderRing();
 				GL11.glTranslated(0D, Math.sin(worldTime / 20D) / 20 - 0.025, 0D);
@@ -95,20 +122,27 @@ public class RenderTilePylon extends TileEntitySpecialRenderer {
 
 			GL11.glPushMatrix();
 			GL11.glTranslated(0D, Math.sin(worldTime / 20D) / 17.5, 0D);
-
 			if(!ConfigHandler.oldPylonModel)
+			{
 				GL11.glTranslatef(0.5F, 0F, -0.5F);
+			}
 
 			GL11.glRotatef((float) -worldTime, 0F, 1F, 0F);
 			if(!ConfigHandler.oldPylonModel)
+			{
 				GL11.glTranslatef(-0.5F, 0F, 0.5F);
-
+			}
 
 			GL11.glDisable(GL11.GL_CULL_FACE);
 			model.renderCrystal();
 
 			GL11.glColor4f(1F, 1F, 1F, a);
-			if(!ShaderHelper.shadersAreUsable()) {
+			
+			//SHADERS
+
+			//if the shaders are turned off...
+			if(!ShaderHelper.shadersAreUsable() || !ShaderHelper.pylonGlowUsable()) //new logic to check for added config
+			{
 				int light = 15728880;
 				int lightmapX = light % 65536;
 				int lightmapY = light / 65536;
@@ -119,13 +153,20 @@ public class RenderTilePylon extends TileEntitySpecialRenderer {
 
 			GL11.glDisable(GL11.GL_ALPHA_TEST);
 			GL11.glScalef(1.1F, 1.1F, 1.1F);
-			if(!ConfigHandler.oldPylonModel)
-				GL11.glTranslatef(-0.05F, -0.1F, 0.05F);
-			else GL11.glTranslatef(0F, -0.09F, 0F);
 
-			ShaderHelper.useShader(ShaderHelper.pylonGlow);
+			if(!ConfigHandler.oldPylonModel)
+			{
+				GL11.glTranslatef(-0.05F, -0.1F, 0.05F);
+			}
+			else 
+			{
+				GL11.glTranslatef(0F, -0.09F, 0F);
+			}
+
+
+			ShaderHelper.usePylonGlow(ShaderHelper.pylonGlow);
 			model.renderCrystal();
-			ShaderHelper.releaseShader();
+			ShaderHelper.releasePylonGlow();
 
 			GL11.glEnable(GL11.GL_ALPHA_TEST);
 			GL11.glEnable(GL11.GL_CULL_FACE);
