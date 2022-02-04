@@ -561,9 +561,9 @@ public final class ShaderHelper
 		useHaloShader(0);
 	}
 
-	public static void releaseTerraplateShader() 
+	public static void releaseTerraplateRuneShader() 
 	{
-		useTerraplateShader(0);
+		useTerraplateRuneShader(0);
 	}
 
 	public static void releaseFilmGrainShader() 
@@ -692,8 +692,7 @@ public final class ShaderHelper
 
 		/*
 		* This block checks for compat with an old gl version.
-		* 
-		*
+
 		if(ARBShaderObjects.glGetObjectParameteriARB(program, ARBShaderObjects.GL_OBJECT_LINK_STATUS_ARB) == GL11.GL_FALSE) 
 		{
 			FMLLog.log(Level.INFO, "What are you running this on, msDOS 6? Is the screen phosphorus?");
