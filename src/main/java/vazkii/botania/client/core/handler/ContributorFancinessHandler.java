@@ -167,9 +167,9 @@ public final class ContributorFancinessHandler {
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
 		GL11.glTranslatef(-0.5F, 0.7F, 0F);
 
-		ShaderHelper.useShader(ShaderHelper.gold);
+		ShaderHelper.useGoldShader(ShaderHelper.gold);
 		ItemRenderer.renderItemIn2D(Tessellator.instance, f1, f2, f, f3, icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
-		ShaderHelper.releaseShader();
+		ShaderHelper.releaseGoldShader();
 		GL11.glPopMatrix();
 	}
 

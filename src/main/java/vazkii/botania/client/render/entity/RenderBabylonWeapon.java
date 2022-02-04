@@ -73,7 +73,7 @@ public class RenderBabylonWeapon extends Render {
 		Minecraft.getMinecraft().renderEngine.bindTexture(babylon);
 
 		Tessellator tes = Tessellator.instance;
-		ShaderHelper.useShader(ShaderHelper.halo);
+		ShaderHelper.useHaloShader(ShaderHelper.halo);
 		Random rand = new Random(weapon.getUniqueID().getMostSignificantBits());
 		GL11.glRotatef(-90F, 1F, 0F, 0F);
 		GL11.glTranslatef(0F, -0.3F + rand.nextFloat() * 0.1F, 1F);
@@ -93,7 +93,7 @@ public class RenderBabylonWeapon extends Render {
 		tes.addVertexWithUV(1, 0, -1, 1, 0);
 		tes.draw();
 
-		ShaderHelper.releaseShader();
+		ShaderHelper.releaseHaloShader();
 
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glShadeModel(GL11.GL_FLAT);

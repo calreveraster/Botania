@@ -57,10 +57,10 @@ public class RenderPixie extends RenderLiving {
 		EntityPixie pixie = (EntityPixie) par1Entity;
 
 		if(pixie.getType() == 1)
-			ShaderHelper.useShader(ShaderHelper.doppleganger, callback);
+			ShaderHelper.useDopplegangerShader(ShaderHelper.doppleganger, callback);
 		super.doRender(par1Entity, par2, par4, par6, par8, par9);
 		if(pixie.getType() == 1)
-			ShaderHelper.releaseShader();
+			ShaderHelper.releaseDopplegangerShader();
 	}
 
 	protected int setPixieBrightness(EntityPixie par1EntityPixie, int par2, float par3) {
