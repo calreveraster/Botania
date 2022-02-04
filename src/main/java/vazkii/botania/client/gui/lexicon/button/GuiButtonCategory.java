@@ -143,9 +143,9 @@ public class GuiButtonCategory extends GuiButtonLexicon
 			texture = GL11.glGetInteger(GL11.GL_TEXTURE_BINDING_2D);
 		}
 
-		ShaderHelper.useShader(ShaderHelper.categoryButton, shaderCallback);
+		ShaderHelper.useCategoryButtonShader(ShaderHelper.categoryButton, shaderCallback);
 		RenderHelper.drawTexturedModalRect(xPosition * 2, yPosition * 2, zLevel * 2, 0, 0, 32, 32, s, s);
-		ShaderHelper.releaseShader();
+		ShaderHelper.releaseCategoryButtonShader();
 
 		if(shaders) {
 			OpenGlHelper.setActiveTexture(ARBMultitexture.GL_TEXTURE0_ARB + ConfigHandler.glSecondaryTextureUnit);

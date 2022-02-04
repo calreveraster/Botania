@@ -76,73 +76,73 @@ public final class ShaderHelper
 
 		//We can remove this soon, as the system will only enable shaders that it needs. 
 		//if the main shader config isn't on, break out.
-		if(!shadersAreUsable())
-		{
-			FMLLog.log(Level.INFO, "[BOTANIA] Shaders disabled.");
-			return;
-		}
+		//if(!shadersAreUsable())
+		//{
+			//FMLLog.log(Level.INFO, "[BOTANIA] Shaders disabled.");
+			//return;
+		//}
 		
 		/*
 		* Implemented individual disablers at the config level. 
 		* No idea if this will work. Guess we'll find out.
 		*/
 
-		if (pylonGlowUsable())
-		{
+		//if (pylonGlowUsable())
+		//{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Pylong Glow shader...");
 			pylonGlow = createProgram(null, LibResources.SHADER_PYLON_GLOW_FRAG);
-		}
+		//}
 
-		if (enchanterRuneUsable())
-		{
+		//if (enchanterRuneUsable())
+		//{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Enchanter Rune shader...");
 			enchanterRune = createProgram(null, LibResources.SHADER_ENCHANTER_RUNE_FRAG);
-		}
+		//}
 
-		if (manaPoolUsable())
-		{
+		//if (manaPoolUsable())
+		//{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Mana Pool shader...");
 			manaPool = createProgram(null, LibResources.SHADER_MANA_POOL_FRAG);
-		}
+		//}
 
-		if (dopplegangerUsable())
-		{
+		//if (dopplegangerUsable())
+		//{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Doppleganger shader...");
 			doppleganger = createProgram(LibResources.SHADER_DOPLLEGANGER_VERT, LibResources.SHADER_DOPLLEGANGER_FRAG);
-		}
+		//}
 
-		if (haloUsable())
-		{
+		//if (haloUsable())
+		//{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Halo shader...");
 			halo = createProgram(null, LibResources.SHADER_HALO_FRAG);
-		}
+		//}
 
-		if (dopplegangerBarUsable())
-		{
+		//if (dopplegangerBarUsable())
+		//{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Bar shader...");
 			dopplegangerBar = createProgram(null, LibResources.SHADER_DOPLLEGANGER_BAR_FRAG);
-		}
+		//}
 
-		if (terraplateRuneUsable())
-		{
+		//if (terraplateRuneUsable())
+		//{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Terraplate shader...");
 			terraPlateRune = createProgram(null, LibResources.SHADER_TERRA_PLATE_RUNE_FRAG);
-		}
+		//}
 
-		if (filmGrainUsable())
-		{
+		//if (filmGrainUsable())
+		//{
 			filmGrain = createProgram(null, LibResources.SHADER_FILM_GRAIN_FRAG);
-		}
+		//}
 
-		if (goldUsable())
-		{
+		//if (goldUsable())
+		//{
 			gold = createProgram(null, LibResources.SHADER_GOLD_FRAG);
-		}
+		//}
 
-		if (categoryButtonUsable())
-		{
+		//if (categoryButtonUsable())
+		//{
 			categoryButton = createProgram(null, LibResources.SHADER_CATEGORY_BUTTON_FRAG);
-		}
+		//}
 	}
 
 	/*
@@ -163,7 +163,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] SOMETHING JUST TRIGGERED THE GENERAL SHADER ENVOKER. YOU MISSED SOMETHING.");
+		//FMLLog.log(Level.INFO, "[BOTANIA] SOMETHING JUST TRIGGERED THE GENERAL SHADER ENVOKER. YOU MISSED SOMETHING.");
 		GL20.glUseProgram(shader);
 		
 		//ARBShaderObjects.glUseProgramObjectARB(shader);
@@ -199,7 +199,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] PYLON GLOW ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] PYLON GLOW ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -233,7 +233,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] MANA POOL ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] MANA POOL ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -257,6 +257,7 @@ public final class ShaderHelper
 
 	//==============================================
 	//		ENCHANTER RUNE ENVOKER
+	//		(implemented)
 	//==============================================
 
 	public static void useEnchanterRuneShader(int shader, ShaderCallback callback)
@@ -266,7 +267,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] ENCHANTER RUNE ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] ENCHANTER RUNE ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -290,6 +291,7 @@ public final class ShaderHelper
 
 	//==============================================
 	//		DOPPLEGANGER ENVOKER
+	//		(Implemented)
 	//==============================================
 
 	public static void useDopplegangerShader(int shader, ShaderCallback callback)
@@ -299,7 +301,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -332,7 +334,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER BAR ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER BAR ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -356,6 +358,7 @@ public final class ShaderHelper
 
 	//==============================================
 	//		HALO ENVOKER
+	//		(implemented)
 	//==============================================
 
 	public static void useHaloShader(int shader, ShaderCallback callback)
@@ -365,7 +368,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] HALO ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] HALO ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -398,7 +401,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] TERRAPLATE ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] TERRAPLATE ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -431,7 +434,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] FILM GRAIN ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] FILM GRAIN ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -464,7 +467,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] GOLD ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] GOLD ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -497,7 +500,7 @@ public final class ShaderHelper
 			return;
 		}
 
-		FMLLog.log(Level.INFO, "[BOTANIA] CATEGORY BUTTON ENVOKER TRIGGERED!...");
+		//FMLLog.log(Level.INFO, "[BOTANIA] CATEGORY BUTTON ENVOKER TRIGGERED!...");
 		GL20.glUseProgram(shader);
 
 		if(shader != 0) 
@@ -518,9 +521,6 @@ public final class ShaderHelper
 	{
 		useCategoryButtonShader(shader, null);
 	}
-
-
-
 
 	//==============================================
 	//		YEET SHADERS

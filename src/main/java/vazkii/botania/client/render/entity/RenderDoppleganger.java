@@ -7,6 +7,12 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Jul 12, 2014, 4:07:26 PM (GMT)]
+ *
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *  • Added shader config specifically for this tile's shader. 
+ * ==============================================
+ *
  */
 package vazkii.botania.client.render.entity;
 
@@ -23,7 +29,8 @@ import vazkii.botania.client.core.handler.BossBarHandler;
 import vazkii.botania.client.core.helper.ShaderHelper;
 import vazkii.botania.common.entity.EntityDoppleganger;
 
-public class RenderDoppleganger extends RenderBiped {
+public class RenderDoppleganger extends RenderBiped 
+{
 
 	public static float DEFAULT_GRAIN_INTENSITY = 0.05F;
 	public static float DEFAULT_DISFIGURATION = 0.025F;
@@ -31,10 +38,12 @@ public class RenderDoppleganger extends RenderBiped {
 	public static float grainIntensity = DEFAULT_GRAIN_INTENSITY;
 	public static float disfiguration = DEFAULT_DISFIGURATION;
 
-	public static ShaderCallback callback = new ShaderCallback() {
+	public static ShaderCallback callback = new ShaderCallback() 
+	{
 
 		@Override
-		public void call(int shader) {
+		public void call(int shader) 
+		{
 			// Frag Uniforms
 			int disfigurationUniform = ARBShaderObjects.glGetUniformLocationARB(shader, "disfiguration");
 			ARBShaderObjects.glUniform1fARB(disfigurationUniform, disfiguration);
@@ -45,10 +54,12 @@ public class RenderDoppleganger extends RenderBiped {
 		}
 	};
 
-	public static ShaderCallback defaultCallback = new ShaderCallback() {
+	public static ShaderCallback defaultCallback = new ShaderCallback() 
+	{
 
 		@Override
-		public void call(int shader) {
+		public void call(int shader) 
+		{
 			// Frag Uniforms
 			int disfigurationUniform = ARBShaderObjects.glGetUniformLocationARB(shader, "disfiguration");
 			ARBShaderObjects.glUniform1fARB(disfigurationUniform, DEFAULT_DISFIGURATION);
@@ -59,27 +70,32 @@ public class RenderDoppleganger extends RenderBiped {
 		}
 	};
 
-	public RenderDoppleganger() {
+	public RenderDoppleganger() 
+	{
 		super(new ModelBiped(0.5F), 0F);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) 
+	{
 		EntityDoppleganger dopple = (EntityDoppleganger) par1Entity;
 		BossBarHandler.setCurrentBoss(dopple);
 
 		int invulTime = dopple.getInvulTime();
-		if(invulTime > 0) {
+		if(invulTime > 0) 
+		{
 			grainIntensity = invulTime > 20 ? 1F : invulTime * 0.05F;
 			disfiguration = grainIntensity * 0.3F;
-		} else {
+		} 
+		else 
+		{
 			disfiguration = (0.025F + dopple.hurtTime * ((1F - 0.15F) / 20F)) / 2F;
 			grainIntensity = 0.05F + dopple.hurtTime * ((1F - 0.15F) / 10F);
 		}
 
-		ShaderHelper.useShader(ShaderHelper.doppleganger, callback);
+		ShaderHelper.useDopplegangerShader(ShaderHelper.doppleganger, callback);
 		super.doRender(par1Entity, par2, par4, par6, par8, par9);
-		ShaderHelper.releaseShader();
+		ShaderHelper.releaseDopplegangerShader();
 	}
 
 	@Override

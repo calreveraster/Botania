@@ -7,6 +7,13 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Jul 16, 2015, 5:03:57 PM (GMT)]
+ *
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *	• Changed shadersAreUsable
+ *  • Added shader config specifically for this tile's shader. 
+ * ==============================================
+ *
  */
 package vazkii.botania.client.render.tile;
 
@@ -57,9 +64,9 @@ public class RenderTileLightRelay extends TileEntitySpecialRenderer {
 		GL11.glTranslatef(0F, -off, 0F);
 
 		mc.renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		ShaderHelper.useShader(ShaderHelper.halo);
+		ShaderHelper.useHaloShader(ShaderHelper.halo);
 		func_77026_a(tessellator, iicon);
-		ShaderHelper.releaseShader();
+		ShaderHelper.releaseHaloShader();
 		
 		GL11.glPopMatrix();
 		GL11.glColor4f(1F, 1F, 1F, 1F);
