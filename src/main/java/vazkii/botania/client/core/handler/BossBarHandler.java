@@ -74,19 +74,20 @@ public final class BossBarHandler {
 
 	public static void drawBar(int x, int y, int u, int v, int w, int h, boolean bg) {
 		boolean useDopplegangerShader = currentBoss instanceof IBotaniaBossWithShader;
-		if(useDopplegangerShader) {
+		if(useDopplegangerShader) 
+		{
 			IBotaniaBossWithShader shader = (IBotaniaBossWithShader) currentBoss;
 			int program = shader.getBossBarShaderProgram(bg);
 			ShaderCallback callback = program == 0 ? null : shader.getBossBarShaderCallback(bg, program);
 			barUniformCallback.set(u, v, callback);
 
-			ShaderHelper.useDooplegangerBarShader(program, barUniformCallback);
+			ShaderHelper.useDopplegangerBarShader(program, barUniformCallback);
 		}
 
 		RenderHelper.drawTexturedModalRect(x, y, 0, u, v, w, h);
 
-		if(useShader)
-			ShaderHelper.releaseShader();
+		if(useDopplegangerShader)
+			ShaderHelper.releaseDopplegangerShader();
 	}
 
 	static class BarCallback extends ShaderCallback {
