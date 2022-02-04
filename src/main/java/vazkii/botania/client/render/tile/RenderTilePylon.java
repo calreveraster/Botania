@@ -141,7 +141,7 @@ public class RenderTilePylon extends TileEntitySpecialRenderer {
 			//SHADERS
 
 			//if the shaders are turned off...
-			if(!ShaderHelper.shadersAreUsable() || !ShaderHelper.pylonGlowUsable()) //new logic to check for added config
+			if(!ShaderHelper.pylonGlowUsable()) //new logic to check for added config
 			{
 				int light = 15728880;
 				int lightmapX = light % 65536;

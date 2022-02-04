@@ -159,7 +159,7 @@ public final class ConfigHandler
 		* These will replace the above option to individually disable certain shaders.
 		*/
 
-		desc = "Set this to false to disable the Pylon Glow Shader";
+		/desc = "Set this to false to disable the Pylon Glow Shader";
 		usePylonGlowShader = loadPropBool("pylonGlowShaders.enabled", desc, usePylonGlowShader);
 
 		desc = "Set this to false to disable the Enchanter Rune Shader";
