@@ -87,62 +87,62 @@ public final class ShaderHelper
 		* No idea if this will work. Guess we'll find out.
 		*/
 
-		//if (pylonGlowUsable())
-		//{
+		if (pylonGlowUsable())
+		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Pylong Glow shader...");
 			pylonGlow = createProgram(null, LibResources.SHADER_PYLON_GLOW_FRAG);
-		//}
+		}
 
-		//if (enchanterRuneUsable())
-		//{
+		if (enchanterRuneUsable())
+		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Enchanter Rune shader...");
 			enchanterRune = createProgram(null, LibResources.SHADER_ENCHANTER_RUNE_FRAG);
-		//}
+		}
 
-		//if (manaPoolUsable())
-		//{
+		if (manaPoolUsable())
+		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Mana Pool shader...");
 			manaPool = createProgram(null, LibResources.SHADER_MANA_POOL_FRAG);
-		//}
+		}
 
-		//if (dopplegangerUsable())
-		//{
+		if (dopplegangerUsable())
+		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Doppleganger shader...");
 			doppleganger = createProgram(LibResources.SHADER_DOPLLEGANGER_VERT, LibResources.SHADER_DOPLLEGANGER_FRAG);
-		//}
+		}
 
-		//if (haloUsable())
-		//{
+		if (haloUsable())
+		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Halo shader...");
 			halo = createProgram(null, LibResources.SHADER_HALO_FRAG);
-		//}
+		}
 
-		//if (dopplegangerBarUsable())
-		//{
+		if (dopplegangerBarUsable())
+		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Bar shader...");
 			dopplegangerBar = createProgram(null, LibResources.SHADER_DOPLLEGANGER_BAR_FRAG);
-		//}
+		}
 
-		//if (terraplateRuneUsable())
-		//{
+		if (terraplateRuneUsable())
+		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Terraplate shader...");
 			terraPlateRune = createProgram(null, LibResources.SHADER_TERRA_PLATE_RUNE_FRAG);
-		//}
+		}
 
-		//if (filmGrainUsable())
-		//{
+		if (filmGrainUsable())
+		{
 			filmGrain = createProgram(null, LibResources.SHADER_FILM_GRAIN_FRAG);
-		//}
+		}
 
-		//if (goldUsable())
-		//{
+		if (goldUsable())
+		{
 			gold = createProgram(null, LibResources.SHADER_GOLD_FRAG);
-		//}
+		}
 
-		//if (categoryButtonUsable())
-		//{
+		if (categoryButtonUsable())
+		{
 			categoryButton = createProgram(null, LibResources.SHADER_CATEGORY_BUTTON_FRAG);
-		//}
+		}
 	}
 
 	/*
