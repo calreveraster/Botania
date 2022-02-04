@@ -104,13 +104,13 @@ public final class ShaderHelper
 			manaPool = createProgram(null, LibResources.SHADER_MANA_POOL_FRAG);
 		}
 
-		if (dopplegangerShaderUsable())
+		if (dopplegangerUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Doppleganger shader...");
 			doppleganger = createProgram(LibResources.SHADER_DOPLLEGANGER_VERT, LibResources.SHADER_DOPLLEGANGER_FRAG);
 		}
 
-		if (haloShaderUsable())
+		if (haloUsable())
 		{
 			FMLLog.log(Level.INFO, "[BOTANIA] Starting Halo shader...");
 			halo = createProgram(null, LibResources.SHADER_HALO_FRAG);
@@ -227,7 +227,7 @@ public final class ShaderHelper
 	{
 		useShader(0);
 	}
-	public static void releasePylongGlow() 
+	public static void releasePylonGlow() 
 	{
 		usePylonGlow(0);
 	}
@@ -265,7 +265,7 @@ public final class ShaderHelper
 		return ConfigHandler.useDopplegangerShader && OpenGlHelper.shadersSupported;
 	}
 
-		public static boolean haloShaderUsable() 
+		public static boolean haloUsable() 
 	{
 		return ConfigHandler.useHaloShader && OpenGlHelper.shadersSupported;
 	}
@@ -285,7 +285,7 @@ public final class ShaderHelper
 		return ConfigHandler.useFilmGrainShader && OpenGlHelper.shadersSupported;
 	}
 
-	public static boolean goldSUsable() 
+	public static boolean goldUsable() 
 	{
 		return ConfigHandler.useGoldShader && OpenGlHelper.shadersSupported;
 	}
