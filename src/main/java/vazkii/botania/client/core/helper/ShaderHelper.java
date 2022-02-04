@@ -391,9 +391,9 @@ public final class ShaderHelper
 	//		TERRAPLATE ENVOKER
 	//==============================================
 
-	public static void useTerraplateShader(int shader, ShaderCallback callback)
+	public static void useTerraplateRuneShader(int shader, ShaderCallback callback)
 	{
-		if(!terraplateUsable())
+		if(!terraplateRuneUsable())
 		{
 			return;
 		}
@@ -415,9 +415,9 @@ public final class ShaderHelper
 		}
 	}
 
-	public static void useTerraplateShader(int shader) 
+	public static void useTerraplateRuneShader(int shader) 
 	{
-		useTerraplateShader(shader, null);
+		useTerraplateRuneShader(shader, null);
 	}
 
 	//==============================================
@@ -530,7 +530,7 @@ public final class ShaderHelper
 	{
 		useShader(0);
 	}
-	
+
 	public static void releasePylonGlowShader() 
 	{
 		usePylonGlowShader(0);
@@ -644,11 +644,11 @@ public final class ShaderHelper
 	}
 
 	/*
-	* There's a chance I may need to do individual createProgams for each shader. 
-	* Just noting that for myself. 
+	*============================================================================
+	*                 CREATE PROGRAM 
+	*============================================================================
 	*/
 
-	//this gets run on each shader
 	//GL20 done.
 	private static int createProgram(String vert, String frag) 
 	{
