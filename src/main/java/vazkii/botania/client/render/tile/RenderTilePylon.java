@@ -7,6 +7,12 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Feb 18, 2014, 10:18:36 PM (GMT)]
+ * 
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *	• Added shader config specifically for this tile's shader. 
+ * ==============================================
+ * 
  */
 package vazkii.botania.client.render.tile;
 
@@ -164,9 +170,9 @@ public class RenderTilePylon extends TileEntitySpecialRenderer {
 			}
 
 
-			ShaderHelper.usePylonGlow(ShaderHelper.pylonGlow);
+			ShaderHelper.usePylonGlowShader(ShaderHelper.pylonGlow);
 			model.renderCrystal();
-			ShaderHelper.releasePylonGlow();
+			ShaderHelper.releasePylonGlowShader();
 
 			GL11.glEnable(GL11.GL_ALPHA_TEST);
 			GL11.glEnable(GL11.GL_CULL_FACE);

@@ -74,6 +74,7 @@ public final class ShaderHelper
 	{
 		FMLLog.log(Level.INFO, "[BOTANIA] Shaders system initializing...");
 
+		//We can remove this soon, as the system will only enable shaders that it needs. 
 		//if the main shader config isn't on, break out.
 		if(!shadersAreUsable())
 		{
@@ -188,9 +189,10 @@ public final class ShaderHelper
 
 	//==============================================
 	//		PYLON GLOW ENVOKER
+	//		(Implemented)
 	//==============================================
 	
-	public static void usePylonGlow(int shader, ShaderCallback callback)
+	public static void usePylonGlowShader(int shader, ShaderCallback callback)
 	{
 		if(!pylonGlowUsable())
 		{
@@ -214,10 +216,311 @@ public final class ShaderHelper
 		}
 	}
 
-	public static void usePylonGlow(int shader) 
+	public static void usePylonGlowShader(int shader) 
 	{
-		usePylonGlow(shader, null);
+		usePylonGlowShader(shader, null);
 	}
+
+	//==============================================
+	//		MANA POOL ENVOKER
+	//		(Implemented)
+	//==============================================
+
+	public static void useManaPoolShader(int shader, ShaderCallback callback)
+	{
+		if(!manaPoolUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] MANA POOL ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useManaPoolShader(int shader) 
+	{
+		useManaPoolShader(shader, null);
+	}
+
+	//==============================================
+	//		ENCHANTER RUNE ENVOKER
+	//==============================================
+
+	public static void useEnchanterRuneShader(int shader, ShaderCallback callback)
+	{
+		if(!enchanterRuneUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] ENCHANTER RUNE ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useEnchanterRuneShader(int shader) 
+	{
+		useEnchanterRuneShader(shader, null);
+	}
+
+	//==============================================
+	//		DOPPLEGANGER ENVOKER
+	//==============================================
+
+	public static void useDopplegangerShader(int shader, ShaderCallback callback)
+	{
+		if(!dopplegangerUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useDopplegangerShader(int shader) 
+	{
+		useDopplegangerShader(shader, null);
+	}
+
+	//==============================================
+	//		DOPPLEGANGER BAR ENVOKER
+	//==============================================
+
+	public static void useDopplegangerBarShader(int shader, ShaderCallback callback)
+	{
+		if(!dopplegangerBarUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] DOPPLEGANGER BAR ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useDopplegangerBarShader(int shader) 
+	{
+		useDopplegangerBarShader(shader, null);
+	}
+
+	//==============================================
+	//		HALO ENVOKER
+	//==============================================
+
+	public static void useHaloShader(int shader, ShaderCallback callback)
+	{
+		if(!haloUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] HALO ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useHaloShader(int shader) 
+	{
+		useHaloShader(shader, null);
+	}
+
+	//==============================================
+	//		TERRAPLATE ENVOKER
+	//==============================================
+
+	public static void useTerraplateShader(int shader, ShaderCallback callback)
+	{
+		if(!terraplateUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] TERRAPLATE ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useTerraplateShader(int shader) 
+	{
+		useTerraplateShader(shader, null);
+	}
+
+	//==============================================
+	//		FILM GRAIN ENVOKER
+	//==============================================
+
+	public static void useFilmGrainShader(int shader, ShaderCallback callback)
+	{
+		if(!filmGrainUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] FILM GRAIN ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useFilmGrainShader(int shader) 
+	{
+		useFilmGrainShader(shader, null);
+	}
+
+	//==============================================
+	//		GOLD ENVOKER
+	//==============================================
+
+	public static void useGoldShader(int shader, ShaderCallback callback)
+	{
+		if(!goldUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] GOLD ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useGoldShader(int shader) 
+	{
+		useGoldShader(shader, null);
+	}
+
+	//==============================================
+	//		CATEGORY BUTTON ENVOKER
+	//==============================================
+
+	public static void useCategoryButtonShader(int shader, ShaderCallback callback)
+	{
+		if(!categoryButtonUsable())
+		{
+			return;
+		}
+
+		FMLLog.log(Level.INFO, "[BOTANIA] CATEGORY BUTTON ENVOKER TRIGGERED!...");
+		GL20.glUseProgram(shader);
+
+		if(shader != 0) 
+		{
+			//int time = ARBShaderObjects.glGetUniformLocationARB(shader, "time");
+			//ARBShaderObjects.glUniform1iARB(time, ClientTickHandler.ticksInGame);
+			int time = GL20.glGetUniformLocation(shader, "time");
+			GL20.glUniform1i(time, ClientTickHandler.ticksInGame);
+
+			if(callback != null)
+			{
+				callback.call(shader);
+			}
+		}
+	}
+
+	public static void useCategoryButtonShader(int shader) 
+	{
+		useCategoryButtonShader(shader, null);
+	}
+
+
+
 
 	//==============================================
 	//		YEET SHADERS
@@ -227,23 +530,68 @@ public final class ShaderHelper
 	{
 		useShader(0);
 	}
-	public static void releasePylonGlow() 
+	
+	public static void releasePylonGlowShader() 
 	{
-		usePylonGlow(0);
+		usePylonGlowShader(0);
 	}
+
+	public static void releaseManaPoolShader() 
+	{
+		useManaPoolShader(0);
+	}
+
+	public static void releaseEnchanterRuneShader() 
+	{
+		useEnchanterRuneShader(0);
+	}
+
+	public static void releaseDopplegangerShader() 
+	{
+		useDopplegangerShader(0);
+	}
+
+	public static void releaseDopplegangerBarShader() 
+	{
+		useDopplegangerBarShader(0);
+	}
+
+	public static void releaseHaloShader() 
+	{
+		useHaloShader(0);
+	}
+
+	public static void releaseTerraplateShader() 
+	{
+		useTerraplateShader(0);
+	}
+
+	public static void releaseFilmGrainShader() 
+	{
+		useFilmGrainShader(0);
+	}
+
+	public static void releaseGoldShader() 
+	{
+		useGoldShader(0);
+	}
+
+	public static void releaseCategoryButtonShader() 
+	{
+		useCategoryButtonShader(0);
+	}
+
+/*
+*============================================================================
+*                 SHADER CHECKS
+*============================================================================
+*/
 
 	//renamed from useShaders to be less confusing
 	public static boolean shadersAreUsable() 
 	{
 		return ConfigHandler.useShaders && OpenGlHelper.shadersSupported;
 	}
-
-	/*
-	* ============================================================================
-	* New methods for updated shader configs
-	* Yeet. 
-	* ============================================================================
-	*/
 
 	public static boolean pylonGlowUsable() 
 	{
@@ -265,7 +613,7 @@ public final class ShaderHelper
 		return ConfigHandler.useDopplegangerShader && OpenGlHelper.shadersSupported;
 	}
 
-		public static boolean haloUsable() 
+	public static boolean haloUsable() 
 	{
 		return ConfigHandler.useHaloShader && OpenGlHelper.shadersSupported;
 	}

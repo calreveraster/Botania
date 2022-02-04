@@ -7,6 +7,13 @@
  * Botania License: http://botaniamod.net/license.php
  * 
  * File Created @ [Jan 26, 2014, 12:25:11 AM (GMT)]
+ * 
+ * ==============================================
+ * Last Edited: 2/3/22 by Cal Reveraster
+ *	• Added shader config specifically for this tile's shader. 
+ * ==============================================
+ * 
+
  */
 package vazkii.botania.client.render.tile;
 
@@ -36,7 +43,8 @@ import vazkii.botania.client.model.ModelPool;
 import vazkii.botania.common.block.mana.BlockPool;
 import vazkii.botania.common.block.tile.mana.TilePool;
 
-public class RenderTilePool extends TileEntitySpecialRenderer {
+public class RenderTilePool extends TileEntitySpecialRenderer 
+{
 
 	private static final ResourceLocation texture = new ResourceLocation(LibResources.MODEL_POOL);
 	private static final ResourceLocation textureInf = new ResourceLocation(LibResources.MODEL_INFINITE_POOL);
@@ -68,14 +76,17 @@ public class RenderTilePool extends TileEntitySpecialRenderer {
 
 		GL11.glTranslatef(0.5F, 1.5F, 0.5F);
 		GL11.glScalef(1F, -1F, -1F);
-		if(fab) {
+		if(fab) 
+		{
 			float time = ClientTickHandler.ticksInGame + ClientTickHandler.partialTicks;
 			if(tileentity != null)
 				time += new Random(tileentity.xCoord ^ tileentity.yCoord ^ tileentity.zCoord).nextInt(100000);
 
 			Color color = Color.getHSBColor(time * 0.005F, 0.6F, 1F);
 			GL11.glColor4ub((byte) color.getRed(), (byte) color.getGreen(), (byte) color.getBlue(), (byte) 255);
-		} else {
+		} 
+		else 
+		{
 			int color = pool.color;
 			float[] acolor = EntitySheep.fleeceColorTable[color];
 			GL11.glColor4f(acolor[0], acolor[1], acolor[2], a);
@@ -103,11 +114,14 @@ public class RenderTilePool extends TileEntitySpecialRenderer {
 		float v = 1F / 8F;
 		float w = -v * 3.5F;
 
-		if(pool.getWorldObj() != null) {
+		if(pool.getWorldObj() != null) 
+		{
 			Block below = pool.getWorldObj().getBlock(pool.xCoord, pool.yCoord - 1, pool.zCoord);
-			if(below instanceof IPoolOverlayProvider) {
+			if(below instanceof IPoolOverlayProvider) 
+			{
 				IIcon overlay = ((IPoolOverlayProvider) below).getIcon(pool.getWorldObj(), pool.xCoord, pool.yCoord - 1, pool.zCoord);
-				if(overlay != null) {
+				if(overlay != null) 
+				{
 					GL11.glPushMatrix();
 					GL11.glEnable(GL11.GL_BLEND);
 					GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -126,7 +140,8 @@ public class RenderTilePool extends TileEntitySpecialRenderer {
 			}
 		}
 
-		if(waterLevel > 0) {
+		if(waterLevel > 0) 
+		{
 			s = 1F / 256F * 14F;
 			GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);
@@ -138,9 +153,9 @@ public class RenderTilePool extends TileEntitySpecialRenderer {
 			GL11.glScalef(s, s, s);
 
 
-			ShaderHelper.useShader(ShaderHelper.manaPool);
+			ShaderHelper.useManaPoolShader(ShaderHelper.manaPool);
 			renderIcon(0, 0, BlockPool.manaIcon, 16, 16, 240);
-			ShaderHelper.releaseShader();
+			ShaderHelper.releaseManaPoolShader();
 
 			GL11.glEnable(GL11.GL_ALPHA_TEST);
 			GL11.glDisable(GL11.GL_BLEND);
@@ -153,7 +168,8 @@ public class RenderTilePool extends TileEntitySpecialRenderer {
 		forceManaNumber = -1;
 	}
 
-	public void renderIcon(int par1, int par2, IIcon par3Icon, int par4, int par5, int brightness) {
+	public void renderIcon(int par1, int par2, IIcon par3Icon, int par4, int par5, int brightness) 
+	{
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
 		tessellator.setBrightness(brightness);

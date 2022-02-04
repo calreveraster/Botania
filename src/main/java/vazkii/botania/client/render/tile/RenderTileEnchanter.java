@@ -11,6 +11,7 @@
  * ==============================================
  * Last Edited: 2/3/22 by Cal Reveraster
  *	• Changed shadersAreUsable
+ *  • Added shader config specifically for this tile's shader. 
  * ==============================================
  *
  */
@@ -35,13 +36,15 @@ import vazkii.botania.client.core.helper.ShaderHelper;
 import vazkii.botania.common.block.mana.BlockEnchanter;
 import vazkii.botania.common.block.tile.TileEnchanter;
 
-public class RenderTileEnchanter extends TileEntitySpecialRenderer {
+public class RenderTileEnchanter extends TileEntitySpecialRenderer 
+{
 
 	RenderItem renderItem = new RenderItem();
 	EntityItem item;
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float f) {
+	public void renderTileEntityAt(TileEntity tileentity, double d0, double d1, double d2, float f) 
+	{
 		TileEnchanter enchanter = (TileEnchanter) tileentity;
 		float alphaMod = 0F;
 
@@ -77,10 +80,15 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		float alpha = (float) ((Math.sin((ClientTickHandler.ticksInGame + f) / 8D) + 1D) / 5D + 0.4D) * alphaMod;
 
-		if(alpha > 0) {
-			if(ShaderHelper.shadersAreUsable())
+		//shader stuff
+		if(alpha > 0) 
+		{
+			if(ShaderHelper.enchanterRuneUsable())
+			{
 				GL11.glColor4f(1F, 1F, 1F, alpha);
-			else {
+			}
+			else 
+			{
 				int light = 15728880;
 				int lightmapX = light % 65536;
 				int lightmapY = light / 65536;
@@ -90,7 +98,8 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 
 			Minecraft.getMinecraft().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
-			if(enchanter.stage == 3 || enchanter.stage == 4) {
+			if(enchanter.stage == 3 || enchanter.stage == 4) 
+			{
 				int ticks = enchanter.stageTicks + enchanter.stage3EndTicks;
 				int angle = ticks * 2;
 				float yTranslation = Math.min(20, ticks) / 20F * 1.15F;
@@ -102,9 +111,9 @@ public class RenderTileEnchanter extends TileEntitySpecialRenderer {
 				GL11.glTranslatef(-2.5F, -2.5F, 0F);
 			}
 
-			ShaderHelper.useShader(ShaderHelper.enchanterRune);
+			ShaderHelper.useEnchanterRuneShader(ShaderHelper.enchanterRune);
 			renderIcon(0, 0, BlockEnchanter.overlay, 5, 5, 240);
-			ShaderHelper.releaseShader();
+			ShaderHelper.releaseEnchanterRuneShader();
 		}
 
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
