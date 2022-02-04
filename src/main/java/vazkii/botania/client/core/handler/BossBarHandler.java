@@ -73,7 +73,7 @@ public final class BossBarHandler {
 	}
 
 	public static void drawBar(int x, int y, int u, int v, int w, int h, boolean bg) {
-		boolean useDooplegangerShader = currentBoss instanceof IBotaniaBossWithShader;
+		boolean useDopplegangerShader = currentBoss instanceof IBotaniaBossWithShader;
 		if(useDopplegangerShader) {
 			IBotaniaBossWithShader shader = (IBotaniaBossWithShader) currentBoss;
 			int program = shader.getBossBarShaderProgram(bg);
